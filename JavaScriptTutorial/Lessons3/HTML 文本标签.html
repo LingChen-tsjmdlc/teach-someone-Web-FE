@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML文本标签综合示例</title>
+  </head>
+  <body>
+    <h1>HTML文本标签综合示例</h1>
+
+    <h2>标题标签展示</h2>
+    <h1>这是一级标题 (h1)</h1>
+    <h2>这是二级标题 (h2)</h2>
+    <h3>这是三级标题 (h3)</h3>
+    <h4>这是四级标题 (h4)</h4>
+    <h5>这是五级标题 (h5)</h5>
+    <h6>这是六级标题 (h6)</h6>
+
+    <hr />
+
+    <h2>段落与换行</h2>
+    <p>这是一个普通的段落。在HTML中，p标签用于定义段落。</p>
+    <p>
+      这是另一个段落，<br />这里使用了&lt;br&gt;标签进行强制换行，<br />可以看到文本被分成了多行。
+    </p>
+
+    <hr />
+
+    <h2>预格式化文本</h2>
+    <pre>
+        这段文本使用了 pre 标签，
+        它会保留所有的空格和换行，
+        非常适合展示代码或诗歌。
+        
+        function hello() {
+            console.log("Hello, World!");
+            return true;
+        }
+    </pre>
+
+    <h2>代码相关标签</h2>
+    <p>
+      在HTML中，我们可以使用 <code>code</code> 标签来显示代码片段，例如：<code
+        >const x = 10;</code
+      >
+    </p>
+
+    <p>
+      数学公式中的变量可以使用<var>&lt;var&gt;</var>标签：<var>E</var> =
+      <var>m</var><var>c</var><sup>2</sup>
+    </p>
+
+    <hr />
+
+    <h2>语义化文本标签</h2>
+    <p>
+      <abbr title="HyperText Markup Language">HTML</abbr
+      >是构建网页的标准语言，<abbr title="Cascading Style Sheets">CSS</abbr
+      >用于样式设计。
+    </p>
+
+    <div>
+      联系人：王五<br />
+      邮箱：<a href="www.bilibili.com">wangwu@example.com</a><br />
+      地址：上海市浦东新区张江高科技园区<br />
+      电话：138-1234-5678
+    </div>
+
+    <p>
+      当前时间：<time datetime="2023-11-20T15:30:00+08:00"
+        >2023年11月20日下午3点30分</time
+      >
+    </p>
+    <p>下次会议：<time datetime="2023-12-01T09:00">12月1日上午9点</time></p>
+  </body>
+</html>

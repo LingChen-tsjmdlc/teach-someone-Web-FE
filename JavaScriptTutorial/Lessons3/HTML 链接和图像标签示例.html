@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>链接和图像标签示例</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>链接和图像标签示例</h1>
+
+    <div class="container">
+      <div class="links">
+        <h2>超链接示例</h2>
+        <p>
+          这是一个<a href="#section1">页面内链接</a
+          >，点击会跳转到本页面的指定位置。
+        </p>
+
+        <p>
+          这是一个<a
+            target="_blank"
+            href="https://www.example.com"
+            class="external-link"
+            >外部链接</a
+          >， 会在新标签页打开（使用了target="_blank"）。
+        </p>
+
+        <p>
+          这是一个<a href="https://www.example.com" class="external-link"
+            >外部链接</a
+          >， 不会在新标签页打开（没有使用了target="_blank"）。
+        </p>
+
+        <p id="section1">这是页面内的锚点位置，上面的链接会跳转到这里。</p>
+      </div>
+
+      <div class="image-box">
+        <h2>图像示例</h2>
+        <img
+          src="https://api.xingzhige.com/API/Bing_img/"
+          alt="占位图像"
+          width="300"
+          height="200"
+        />
+        <p>基本的图像展示，包含src、alt和尺寸属性。</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 30px">
+      <h2>链接与图像结合使用</h2>
+      <a href="https://api.xingzhige.com/doc/2" target="_blank">
+        <img
+          src="https://api.xingzhige.com/API/Bing_img/"
+          alt="可点击的图像"
+          width="1920"
+          height="1080"
+        />
+      </a>
+      <p>图像作为链接使用，点击图像会跳转到指定网址。</p>
+    </div>
+  </body>
+</html>
