@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML5语义化标签示例</title>
+  </head>
+  <body>
+    <!-- 页面头部 -->
+    <header>
+      <h1>网站标题</h1>
+      <p>欢迎来到我们的网站</p>
+      <time datetime="2023-11-25">2023年11月25日</time>
+    </header>
+
+    <!-- 导航栏 -->
+    <nav>
+      <ul>
+        <li><a href="https://www.bilibili.com/">首页</a></li>
+        <li><a href="#news">新闻</a></li>
+        <li><a href="#about">关于我们</a></li>
+      </ul>
+
+      <img
+        src="https://pic4.zhimg.com/v2-e80b18113caca330b909bf13cf8941a7_r.jpg?source=1940ef5c"
+        alt="网站Logo"
+        width="100"
+        height="100"
+      />
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main>
+      <!-- 文章内容 -->
+      <article>
+        <header>
+          <h2>HTML5语义化标签的重要性</h2>
+          <p>
+            作者: <mark>前端开发者</mark> | 发布时间:
+            <time datetime="2023-11-20">11月20日</time>
+          </p>
+        </header>
+
+        <section>
+          <h3>什么是语义化标签</h3>
+          <p>
+            语义化标签是指<mark>有明确含义的HTML标签</mark>，它们不仅定义了内容的外观，还描述了内容的含义。
+          </p>
+
+          <figure>
+            <img src="semantic-html.jpg" alt="语义化HTML示例" />
+            <figcaption>图1: HTML5语义化结构示意图</figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h3>使用语义化标签的好处</h3>
+          <p>提高可访问性，有利于SEO，代码更易维护。</p>
+          <progress value="75" max="100"></progress>
+          <p>当前学习进度: 75%</p>
+        </section>
+
+        <details>
+          <summary>查看更多技术细节</summary>
+          <p>
+            HTML5引入了一系列新的语义化标签，如header、footer、nav、article等，这些标签...
+          </p>
+        </details>
+      </article>
+
+      <!-- 侧边栏 -->
+      <aside>
+        <h3>相关链接</h3>
+        <ul>
+          <li><a href="#html">HTML教程</a></li>
+          <li><a href="#css">CSS教程</a></li>
+        </ul>
+
+        <h3>资源下载</h3>
+        <meter value="0.6">60%</meter>
+        <p>服务器空间使用率: 60%</p>
+      </aside>
+    </main>
+
+    <!-- 页面页脚 -->
+    <footer>
+      <p>2023 公司名称. 保留所有权利.</p>
+      <address>
+        联系方式: <a href="mailto:contact@example.com">contact@example.com</a>
+      </address>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML表单标签示例</title>
+  </head>
+  <body>
+    <form action="/submit" method="post">
+      <!-- 表单分组1：基本信息 -->
+      <fieldset>
+        <legend>基本信息</legend>
+
+        <label for="username">用户名：</label>
+        <input
+          type="text"
+          id="username"
+          name="usernamestring"
+          placeholder="请输入用户名"
+        /><br /><br />
+
+        <label for="password">密码：</label>
+        <input type="password" id="password" name="password" /><br /><br />
+
+        <label for="email">邮箱：</label>
+        <input type="email" id="email" name="email" /><br /><br />
+
+        <label for="age">年龄：</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          min="1"
+          max="120"
+        /><br /><br />
+      </fieldset>
+
+      <!-- 表单分组2：详细信息 -->
+      <fieldset>
+        <legend>详细信息</legend>
+
+        <label>性别：</label>
+        <input type="radio" id="male" name="gender" value="male" />
+        <label for="male">男</label>
+        <input type="radio" id="female" name="gender" value="female" />
+        <label for="female">女</label>
+
+        <br /><br />
+
+        <label>兴趣爱好：</label>
+        <input type="checkbox" id="sports" name="hobby" value="sports" />
+        <label for="sports">运动</label>
+        <input type="checkbox" id="music" name="hobby" value="music" />
+        <label for="music">音乐</label>
+        <input type="checkbox" id="reading" name="hobby" value="reading" />
+        <label for="reading">阅读</label>
+
+        <br /><br />
+
+        <label for="bio">个人简介：</label><br />
+        <textarea id="bio" name="bio" rows="4" cols="50"></textarea><br /><br />
+
+        <label for="country">国家：</label>
+        <select id="country" name="country">
+          <option value="">--请选择--</option>
+          <option value="china">中国</option>
+          <option value="usa">美国</option>
+          <option value="uk">英国</option>
+        </select>
+
+        <br /><br />
+
+        <label for="city">城市：</label>
+        <input type="text" id="city" name="city" list="city-list" />
+        <datalist id="city-list">
+          <option value="北京"></option>
+          <option value="上海"></option>
+          <option value="广州"></option>
+          <option value="深圳"></option>
+        </datalist>
+
+        <br /><br />
+
+        <label for="avatar">上传头像：</label>
+        <input type="file" id="avatar" name="avatar" /><br /><br />
+      </fieldset>
+
+      <!-- 表单分组3：操作按钮 -->
+      <fieldset>
+        <legend>操作</legend>
+        <input type="submit" value="提交表单" />
+        <input type="reset" value="重置表单" />
+        <button type="button">普通按钮</button>
+      </fieldset>
+    </form>
+  </body>
+</html>

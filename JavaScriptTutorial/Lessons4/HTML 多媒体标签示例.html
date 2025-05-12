@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML多媒体标签示例</title>
+  </head>
+  <body>
+    <h1>HTML多媒体标签演示</h1>
+
+    <!-- 音频播放 -->
+    <section>
+      <h2>1. 音频播放器</h2>
+      <audio controls autoplay loop>
+        <source src="audio.mp3" />
+        您的浏览器不支持音频元素
+      </audio>
+      <p>使用&lt;audio&gt;标签播放音频文件</p>
+    </section>
+
+    <!-- 视频播放 -->
+    <section>
+      <h2>2. 视频播放器</h2>
+      <video controls width="600" poster="video-poster.jpg">
+        <source src="https://video.mp4" />
+        <source src="video.webm" />
+        您的浏览器不支持视频元素
+      </video>
+      <p>使用&lt;video&gt;标签播放视频文件，包含字幕轨道</p>
+    </section>
+
+    <!-- 嵌入内容 -->
+    <section>
+      <h2>3. 嵌入外部内容</h2>
+
+      <h3>使用&lt;embed&gt;</h3>
+      <embed
+        src="https://arxiv.org/pdf/2501.03936v1"
+        width="600"
+        height="400"
+      />
+
+      <h3>使用&lt;object&gt;</h3>
+      <object
+        data="https://www.bing.com/search?form=QBLH&q=%E5%8A%A8%E6%BC%AB%E5%A4%B4%E5%83%8F"
+        width="600"
+        height="400"
+      >
+        <param name="quality" value="high" />
+        <param name="allowFullScreen" value="true" />
+        您的浏览器不支持Flash内容
+      </object>
+    </section>
+
+    <!-- 图形绘制 -->
+    <section>
+      <h2>5. 图形绘制</h2>
+
+      <h3>Canvas绘图</h3>
+      <canvas
+        id="myCanvas"
+        width="300"
+        height="150"
+        style="border: 1px solid #000"
+      >
+        您的浏览器不支持Canvas
+      </canvas>
+
+      <h3>SVG矢量图形</h3>
+      <svg width="300" height="200">
+        <rect
+          x="50"
+          y="50"
+          width="200"
+          height="100"
+          fill="white"
+          stroke="black"
+          stroke-width="3"
+        />
+        <circle cx="150" cy="100" r="40" fill="red" />
+      </svg>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="m12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0"
+        />
+      </svg>
+    </section>
+
+    <script>
+      // Canvas绘图示例
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "green";
+      ctx.fillRect(10, 10, 100, 100);
+      ctx.strokeStyle = "red";
+      ctx.strokeRect(30, 30, 50, 50);
+    </script>
+  </body>
+</html>

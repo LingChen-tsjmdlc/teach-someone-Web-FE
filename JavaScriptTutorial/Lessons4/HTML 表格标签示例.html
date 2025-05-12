@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML表格标签示例</title>
+    <style>
+      table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      .highlight {
+        background-color: #f5f5f5;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 完整表格示例 -->
+    <table>
+      <!-- 表格标题 -->
+      <caption>
+        2023年销售数据表
+      </caption>
+
+      <!-- 表格头部 -->
+      <thead>
+        <tr>
+          <th>产品ID</th>
+          <th>产品名称</th>
+          <th>销售额（万元）</th>
+        </tr>
+      </thead>
+
+      <!-- 表格主体 -->
+      <tbody>
+        <tr>
+          <td>001</td>
+          <td>智能手表</td>
+          <td>¥ 120</td>
+        </tr>
+        <tr>
+          <td>002</td>
+          <td>无线耳机</td>
+          <td>¥ 85</td>
+        </tr>
+      </tbody>
+
+      <!-- 表格页脚 -->
+      <tfoot>
+        <tr>
+          <td colspan="2">总计</td>
+          <td>¥ 205</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
