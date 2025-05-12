@@ -68,4 +68,5 @@
 - （最好有）scope 用于说明当前功能点作用于哪个页面或者哪个功能模块
 - （必选）subject 用于简短的描述当前commit，不超过50个字符
 - body 用于填写对本次 commit 的详细描述，可以分成多行
-- footer 不兼容变动声明，或者关闭 Issue
+- footer 不兼容变动声明，或关闭 Issues
+
