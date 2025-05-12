@@ -10,18 +10,18 @@ HTML(Hyper Text Markup Language): 超文本标记语言
 ## 1.2 HTML 基础结构
 
 ```html
-<!-- 文档类型声明 -->
-<html lang="en">
-    <!-- 头部 -->
-    <head>
-        <!-- 元数据 -->
-        <title>页面标题</title>
-    </head>
-    <!-- 主体 -->
-    <body>
-      <a href="https://example.com" class="p-1">链接</a>
-    </body>
-</html>
+  <!-- 文档类型声明 -->
+  <html lang="en">
+      <!-- 头部 -->
+      <head>
+          <!-- 元数据 -->
+          <title>页面标题</title>
+      </head>
+      <!-- 主体 -->
+      <body>
+        <a href="https://example.com" class="p-1">链接</a>
+      </body>
+  </html>
 ```
 
 ## 1.3 HTML元素组成
