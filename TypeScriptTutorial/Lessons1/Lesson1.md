@@ -45,3 +45,100 @@ tsc --watch
 ```bash
 tsc --noEmitonError --watch
 ```
+
+# (补) 四、变量声明：const、let、var
+
+## 1. 核心差异对比
+
+| 特性         | `var`                        | `let`                | `const`              |
+| ------------ | ---------------------------- | -------------------- | -------------------- |
+| **作用域**   | 函数作用域                   | 块级作用域           | 块级作用域           |
+| **变量提升** | ✅（提升并初始化 undefined） | ✅（提升但不初始化） | ✅（提升但不初始化） |
+| **重复声明** | ✅                           | ❌                   | ❌                   |
+| **重新赋值** | ✅                           | ✅                   | ❌                   |
+
+---
+
+## 2. 详细解释
+
+### (1) 作用域范围
+
+```javascript
+// var 的函数作用域
+function varTest() {
+  var x = 1;
+  if (true) {
+    var x = 2; // 相同变量！
+    console.log(x); // 2
+  }
+  console.log(x); // 2
+}
+
+// let/const 的块级作用域
+function letTest() {
+  let x = 1;
+  if (true) {
+    let x = 2; // 不同变量
+    console.log(x); // 2
+  }
+  console.log(x); // 1
+}
+```
+
+### (2) 重复声明
+
+```js
+var c = 1;
+var c = 2; // ✅
+
+let d = 1;
+let d = 2; // ❌ SyntaxError
+
+const e = 1;
+const e = 2; // ❌ SyntaxError
+```
+
+### (3) 重新赋值
+
+```js
+var f = 1;
+f = 2; // ✅
+
+let g = 1;
+g = 2; // ✅
+
+const h = 1;
+h = 2; // ❌ TypeError（对于对象可修改属性）
+```
+
+## 3. TypeScript 最佳实践
+
+### (1) 优先使用 const​​：
+
+```ts
+// 不会修改的值
+const PI = 3.14;
+const API_URL = "http://api.example.com";
+```
+
+### (2) 需要重新赋值时用 let​​：
+
+```ts
+let counter = 0;
+counter += 1;
+```
+
+### ​(3) ​ 永远不要使用 var​​（避免意外作用域泄漏）：
+
+```ts
+// ❌ 错误的写法
+var total = 0;
+// ✅ 正确的写法
+let total = 0;
+```
+
+## 4. 总结
+
+- const​​ → 必须且只能赋值一次（推荐默认使用）
+- ​​let​​ → 允许后续修改（需要时使用）
+- ​​var​​ → 文言文时代的遗迹（不要使用）
