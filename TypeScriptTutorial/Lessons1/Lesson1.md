@@ -25,3 +25,23 @@ message.toupercase()  // 拼写错误
 ```bash
 npm i typescript -g
 ```
+
+## 2. 自动化编译 ts
+
+1. 第一步：创建 TypeScript 编译控制文件
+
+```bash
+tsc --init
+```
+
+2. 第二步：监视目录中的.ts 文件变化
+
+```bash
+tsc --watch
+```
+
+3. 第三步：优化，当编译出错时不生成.js 文件
+
+```bash
+tsc --noEmitonError --watch
+```
