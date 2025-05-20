@@ -54,27 +54,35 @@ interface User {
  * 电商系统类型设计
  *
  * 要求：
- * 1. 定义以下类型和类：
- *    - 商品接口(Product)：id(number)、name(string)、price(number)、库存(stock, number)
- *    - 用户类(User)：id(number)、username(string)、私有密码(password)、购物车(cart)
- *    - 购物车类(Cart)：商品项数组(items)、总价(totalPrice)
- *    - 商品项类(CartItem)：商品(product)、数量(quantity)
+ * 1. 使用interface定义以下类型：
+ *    - 商品(Product):有：id，name，price 三个属性
+ *    - 购物车(Cart):有：items，totalPrice 两个属性
+ *    - 用户(UserShop):有：username，cart 两个属性
  *
  * 2. 实现以下功能：
- *    - User类方法：
- *      * addToCart(product, quantity): 添加商品到购物车
- *      * checkout(): 结算购物车（检查库存并扣除）
- *      * getCartTotal(): 获取购物车总价
- *    - Cart类方法：
- *      * calculateTotal(): 计算购物车总价
- *      * clear(): 清空购物车
- *
- * 3. 添加类型约束：
- *    - 库存不足时不允许添加购物车
- *    - 结算时库存不足的商品跳过处理
- *    - 密码字段外部不可访问
- *
- * 4. 编写使用示例代码
+ *    - createUser(): 创建用户。传入用户名(username,类型UserShop)，返回一个 UserShop 对象。
+ *    - addToCart(): 添加商品到购物车。传入用户(user,类型UserShop)和商品(product,类型Product)，返回更新后的用户对象(UserShop)。
+ *    - getCartTotal(): 计算购物车总价。传入用户(user,类型UserShop)，返回购物车总价(类型number)。
  */
 
 // 请在这里实现你的代码
+
+// 使用示例：
+// 商品列表
+// const products: Product[] = [
+//   { id: 1, name: "苹果", price: 5 },
+//   { id: 2, name: "香蕉", price: 3 },
+//   { id: 3, name: "橙子", price: 4 },
+// ];
+
+// // 创建用户
+// let currentUser = createUser("李四");
+
+// // 添加商品到购物车
+// currentUser = addToCart(currentUser, products[0]); // 添加苹果
+// currentUser = addToCart(currentUser, products[2]); // 添加橙子
+
+// // 获取购物车总价
+// console.log(`${currentUser.username}的购物车:`);
+// console.log("商品列表:", currentUser.cart.items.map((p) => p.name).join(", "));
+// console.log(`总价: ${getCartTotal(currentUser)}元`);
