@@ -34,6 +34,16 @@ npm i typescript -g
 tsc --init
 ```
 
+> ### 补充 bash 命令：
+>
+> - ls 命令：列出当前文件夹里面的文件和文件夹
+>   > 直接使用
+> - cd 命令：切换目录
+>   > - cd 使用方法:
+>   > - `cd <目录名称>`
+>   > - `./` 代表当前目录
+>   > - `../` 代表上一级目录
+
 2. 第二步：监视目录中的.ts 文件变化
 
 ```bash
@@ -78,7 +88,8 @@ function varTest() {
 function letTest() {
   let x = 1;
   if (true) {
-    let x = 2; // 不同变量
+    // let x = 2; // (错误的)不同变量
+    x = 2;
     console.log(x); // 2
   }
   console.log(x); // 1

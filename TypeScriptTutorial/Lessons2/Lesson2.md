@@ -7,16 +7,16 @@ let a:string     //变量a只能存储字符串
 let b:number     //变量b只能存储数值
 let c:boolean    //变量c只能存储布尔值
 a = 'hello'
-a = 100          //警告：不能将类型“number'”分配给类型“string”
+a = 100          //警告：不能将类型“number”分配给类型“string”
 
 b = 666
-b = '你好'       //警告：不能将类型“string”分配给类型“number'”
+b = '你好'       //警告：不能将类型“string”分配给类型“number”
 
 c = true
 c = 666         //警告：不能将类型“number”分配给类型“boolean”
 
 //参数x必须是数字，参数y也必须是数字，函数返回值也必须是数字
-function demo(x:number,y:number):number{
+function demo(x: number,y: number): number{
   return x + y
 }
 
@@ -83,7 +83,7 @@ d = false   // 报错，不能将类型“boolean”分配给“number”
 
     ```TS
     let myApple = "我的苹果";
-    let yourApple = myApple; // 复制了一份给你
+    let yourApple = myApple; // 复制了一份给你（yourApple："我的苹果"）
     yourApple = "你的苹果"; // 你修改了你的复制品
     console.log(myApple); // "我的苹果"（我手里的没变！）
     ```
@@ -111,7 +111,7 @@ d = false   // 报错，不能将类型“boolean”分配给“number”
   - **临时创建 ​** ​：当对原始值调用方法时，JS 会自动将其转换为包装对象，执行后丢弃。
 
     ```TS
-       let apple = "Red apple";
+       let apple: String = "Red apple";
        // JS的步骤：
        // 1. 把苹果装进临时工具箱：new String(apple)
        // 2. 用工具箱的.toUpperCase()工具
@@ -161,7 +161,7 @@ d = false   // 报错，不能将类型“boolean”分配给“number”
 
   ```TS
   //设置a的类型为unknown
-  let a: unknown
+  let a: any
 
   //以下对a的赋值，均正常
   a = 100
@@ -179,6 +179,7 @@ d = false   // 报错，不能将类型“boolean”分配给“number”
   // 设置a的类型为unknown
   let a: unknown
   a = 'hello'
+  // a = 111    (报错)
 
   // 第一种方式：加类型判断
   if (typeof a === 'string') {
@@ -191,6 +192,9 @@ d = false   // 报错，不能将类型“boolean”分配给“number”
 
   //第三种方式：加断言
   x = <string>a
+
+  let b: any
+  y = b
   ```
 
 ## 3. never
@@ -298,12 +302,13 @@ d = false   // 报错，不能将类型“boolean”分配给“number”
 - 定义：元组，一种**特殊的数组类型**，可以**存储固定数量的元素**，而且每个元素的类型是**已知的**且**可以不同**，用于精确的描述一组数组的值，用`?`表示可选内容。
 
   ```TS
+  let arr3:[number, ...string[]]
   //第一个元素必须是string类型，第二个元素必须是number类型:
-  let letarr1:[string,number]
+  let arr1:[string,number]
   //第一个元素必须是number类型，第二个元素是可选的，如果存在，必须是boolean类型:
-  let letarr2:[number,boolean?]
+  let arr2:[number,boolean?]
   //第一个元素必须是number类型，后面的元素可以是任意数量的string类型
-  let letarr3:[number, ...string[]]
+  let arr3:[number, ...string[]]
   //可以赋值
   arr1 = ['hello'，123]
   arr2 = [100]
@@ -410,7 +415,7 @@ enum BooleanLike {
   price = 100;
   ```
 
-## 9. interfac
+<!-- ## 9. interface -->
 
 # 八、自定义类型
 
@@ -443,6 +448,7 @@ function reverseArray<T>(items: T[]): T[] {
 }
 // 使用示例
 reverseArray<number>([1, 2, 3]); // ✅ 返回 [3, 2, 1]
+// reverseArray<number>(123); //  报错
 reverseArray(["a", "b"]); // ✅ 类型推断为 string[]
 ```
 
@@ -510,6 +516,14 @@ function dangerWrap(value: any): any[] {
 dangerWrap(100).map((x) => x.undefinedMethod()); // ❌ 运行时才会报错
 ```
 
+```TS
+function abc (x: string){
+  console.log(x)
+}
+
+(x: string) => console.log(x)
+```
+
 ### (4) 提示
 
 > 💡 ​​ 最佳实践提示 ​​：
@@ -538,6 +552,22 @@ interface User {
   age?: number; // 可选属性
   readonly email: string; // 只读属性
 }
+
+interface Admin {
+  info: User;
+  normalUser: boolean;
+  admin: boolean;
+}
+
+const user2: Admin = {
+  info: {
+    id: 1,
+    name: "张三",
+    email: "zhangsan@example.com",
+  },
+  normalUser: true,
+  admin: true,
+};
 
 // 使用示例
 const user1: User = {
@@ -578,7 +608,7 @@ const myDog: Dog = {
 };
 ```
 
-### (3) 函数类型接口
+### (3) 函数类型接口(不常用)
 
 ```ts
 // 定义函数签名
@@ -588,6 +618,9 @@ interface SearchFunc {
 const mySearch: SearchFunc = (src, kw) => {
   return src.includes(kw);
 };
+// const mySearch = (src: string, kw: string): boolena => {
+//   return src.includes(kw);
+// };
 mySearch("hello world", "hello"); // ✅
 ```
 
