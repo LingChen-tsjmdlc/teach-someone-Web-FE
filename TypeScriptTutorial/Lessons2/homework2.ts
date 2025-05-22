@@ -1,29 +1,21 @@
 // ----- 题目1 -----
 // 给定以下函数，如何改进参数和返回值的类型声明？
 function processInput(input) {
+  //sting | number | boolean
   if (typeof input === "string") {
-    return input.toUpperCase();
+    return input.toUpperCase(); //string
   } else if (typeof input === "number") {
-    return input.toFixed(2);
+    return input.toFixed(2); //numbr
   }
-  return input;
+  return input; //sting | number |boolean
 }
+
 // 改进后的函数签名应该是什么？
 // 调用示例：
 // processInput("hello") → "HELLO"
 // processInput(3.1415) → "3.14"
 // processInput(true) → true
 // 在下面进行改进
-function processInputImprove(
-  input: string | number | boolean
-): string | number | boolean {
-  if (typeof input === "string") {
-    return input.toUpperCase();
-  } else if (typeof input === "number") {
-    return input.toFixed(2);
-  }
-  return input;
-}
 
 // ----- 题目2：类型守卫与自定义类型 -----
 // 定义一个Shape类型，可以是Circle或Square
@@ -32,32 +24,6 @@ function processInputImprove(
 // 实现一个getArea函数，根据传入的Shape计算面积
 
 // 请在这里写下完整的类型定义和函数实现
-interface Circle {
-  kind: "circle";
-  radius: number;
-}
-
-interface Square {
-  kind: "square";
-  sideLength: number;
-}
-
-type Shape = Circle | Square;
-
-function getArea(shape: Shape): number {
-  switch (shape.kind) {
-    case "circle":
-      return Math.PI * shape.radius ** 2;
-    case "square":
-      return shape.sideLength ** 2;
-  }
-}
-
-// 使用示例
-const circle: Circle = { kind: "circle", radius: 5 };
-const square: Square = { kind: "square", sideLength: 4 };
-console.log(getArea(circle)); // 78.53981633974483
-console.log(getArea(square)); // 16
 
 // ----- 题目3：泛型约束 -----
 // 创建一个泛型函数longest，它接受两个参数并返回长度较长的那个
@@ -69,17 +35,7 @@ console.log(getArea(square)); // 16
 //    longest("apple", "banana") → "banana"
 
 // 请在这里写下你的实现
-interface Lengthwise {
-  length: number;
-}
-
-function longest<T extends Lengthwise>(a: T, b: T): T {
-  return a.length >= b.length ? a : b;
-}
-
-// 使用示例
-console.log(longest([1, 2], [3, 4, 5])); // [3, 4, 5]
-console.log(longest("apple", "banana")); // "banana"
+interface Lengthwise {}
 
 // ----- 题目4：映射类型与实用工具类型 -----
 // 给定一个User接口，创建一个新类型ReadonlyUser
@@ -94,20 +50,6 @@ interface User {
 }
 
 // 请在这里定义ReadonlyUser类型
-type ReadonlyUser = {
-  readonly id: number;
-  readonly name: string;
-  readonly email: string;
-  createdAt?: Date;
-};
-
-// 使用示例
-const user: ReadonlyUser = {
-  id: 1,
-  name: "John",
-  email: "john@example.com",
-  createdAt: new Date(),
-};
 
 // ----- 第五题：TypeScript 综合应用题 -----
 /**
@@ -120,70 +62,15 @@ const user: ReadonlyUser = {
  *    - 用户(UserShop):有：username，cart 两个属性
  *
  * 2. 实现以下功能：
- *    - createUser(): 创建用户
- *    - addToCart(): 添加商品到购物车
- *    - getCartTotal(): 计算购物车总价
+ *    - createUser(): 创建用户。传入用户名(username,类型UserShop)，返回一个 UserShop 对象。
+ *    - addToCart(): 添加商品到购物车。传入用户(user,类型UserShop)和商品(product,类型Product)，返回更新后的用户对象(UserShop)。
+ *    - getCartTotal(): 计算购物车总价。传入用户(user,类型UserShop)，返回购物车总价(类型number)。
  */
 
 // 请在这里实现你的代码
 
-// 使用 interface 定义类型
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-}
-
-interface Cart {
-  items: Product[];
-  totalPrice: number;
-}
-
-interface UserShop {
-  username: string;
-  cart: Cart;
-}
-
-// 实现功能函数 - 创建用户
-function createUser(username: string): UserShop {
-  return {
-    username: username,
-    cart: {
-      items: [],
-      totalPrice: 0,
-    },
-  };
-}
-
-// 实现功能函数 - 添加商品到购物车
-function addToCart(user: UserShop, product: Product): UserShop {
-  // 创建新的商品数组
-  const newItems = user.cart.items.concat(product);
-
-  // 计算新的总金额
-  const newTotal = calculateTotal(newItems);
-
-  // 返回新的user对象
-  return {
-    username: user.username,
-    cart: {
-      items: newItems,
-      totalPrice: newTotal,
-    },
-  };
-}
-
-// 计算总价的辅助函数：添加商品到购物车
-function calculateTotal(items: Product[]): number {
-  return items.reduce((sum, item) => sum + item.price, 0);
-}
-
-// 实现功能函数 - 计算购物车总价
-function getCartTotal(user: UserShop): number {
-  return user.cart.totalPrice;
-}
-
 // 使用示例：
+// 商品列表
 // const products: Product[] = [
 //   { id: 1, name: "苹果", price: 5 },
 //   { id: 2, name: "香蕉", price: 3 },
