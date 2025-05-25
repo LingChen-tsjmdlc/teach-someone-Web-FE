@@ -1,12 +1,13 @@
 // ----- 题目1 -----
 // 给定以下函数，如何改进参数和返回值的类型声明？
 function processInput(input) {
+  //sting | number |boolean
   if (typeof input === "string") {
-    return input.toUpperCase();
+    return input.toUpperCase(); //sting
   } else if (typeof input === "number") {
-    return input.toFixed(2);
+    return input.toFixed(2); //number
   }
-  return input;
+  return input; //boolean
 }
 
 // 改进后的函数签名应该是什么？
@@ -23,6 +24,15 @@ function processInput(input) {
 // 实现一个getArea函数，根据传入的Shape计算面积
 
 // 请在这里写下完整的类型定义和函数实现
+function getArea(Shape: number, rsdius: number, sidLength: number) {
+  let Circle = Math.PI * rsdius;
+  let Square = sidLength * sidLength;
+  if (Shape == Circle) {
+    console.log(Circle);
+  } else if (Shape == Square) {
+    console.log(Square);
+  }
+}
 
 // ----- 题目3：泛型约束 -----
 // 创建一个泛型函数longest，它接受两个参数并返回长度较长的那个
@@ -34,6 +44,12 @@ function processInput(input) {
 //    longest("apple", "banana") → "banana"
 
 // 请在这里写下你的实现
+interface Lengthwise {
+  length: object | string;
+}
+function longest<T extends Lengthwise>(arg: T): void {
+  console.log(arg.length);
+}
 
 // ----- 题目4：映射类型与实用工具类型 -----
 // 给定一个User接口，创建一个新类型ReadonlyUser
@@ -48,7 +64,10 @@ interface User {
 }
 
 // 请在这里定义ReadonlyUser类型
-
+interface ReadonlyUser {
+  readonly info: User;
+  createdAt?: Date;
+}
 // ----- 第五题：TypeScript 综合应用题 -----
 /**
  * 电商系统类型设计
@@ -66,6 +85,19 @@ interface User {
  */
 
 // 请在这里实现你的代码
+interface Product {
+  id: number;
+  nume: string;
+  price: number;
+}
+interface Cart {
+  items: string;
+  totalPrice: number;
+}
+interface UserShop {
+  username: string;
+  cart: number;
+}
 
 // 使用示例：
 // 商品列表
