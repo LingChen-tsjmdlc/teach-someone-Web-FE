@@ -91,12 +91,46 @@ interface Product {
   price: number;
 }
 interface Cart {
-  items: string;
+  items: Product[];
   totalPrice: number;
 }
 interface UserShop {
   username: string;
-  cart: number;
+  cart: Cart;
+}
+//创建用户
+function createUser(username: string): UserShop {
+  return {
+    username: username,
+    cart: {
+      items: [],
+      totalPrice: 0,
+    },
+  };
+}
+//添加商品到购物车
+function addToCart(user: UserShop, product: Product): UserShop {
+  let newcart: Product[] = [];
+  for (let i = 0; i < user.cart.items.length; i++) {
+    newcart.push(user.cart.items[i]);
+  }
+  newcart.push(product);
+
+  let newtotal = 0;
+  for (let i = 0; i < newcart.length; i++) {
+    newtotal += newcart[i].price;
+  }
+  return {
+    username: user.username,
+    cart: {
+      items: newcart,
+      totalPrice: newtotal,
+    },
+  };
+}
+//计算购物车总价
+function getCartTotal(user: UserShop): number {
+  return user.cart.totalPrice;
 }
 
 // 使用示例：
