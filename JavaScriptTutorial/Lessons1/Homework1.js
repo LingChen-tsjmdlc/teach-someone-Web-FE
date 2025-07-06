@@ -60,15 +60,15 @@ if (wight >= 50) {
 } else {
   console.log("非超重");
 }
-//var wight = 18;
-//wight >= 50?console.log("超重"): console.log("非超重")
+var wight = 18;
+wight >= 50 ? console.log("超重") : console.log("非超重")
 
 /** 四，编程题 */
 // 判断一个变量是否是数字，如果是数字则输出"是数字"，否则输出"不是数字"。
-var num="123"
-if(typeof num=="number"){
-console.log("是数字");
+var num = "123"
+if (typeof num == "number" && !isNaN(num)) {
+  console.log("是数字");
 }
-else{
+else {
   console.log("不是数字");
 }

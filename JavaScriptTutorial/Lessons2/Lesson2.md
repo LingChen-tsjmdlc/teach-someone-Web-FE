@@ -164,7 +164,7 @@
 
 # 2. 语句
 
-## 2.1 if 语句
+## 2.1 if / if else / if else if 语句
 
 - 含义：做判断用
 - 基础语法:
@@ -225,25 +225,227 @@ if (score >= 90) {
 }
 ```
 
-## 2.2 if else 语句 （与 C# 相同）
+## 2.4 switch 语句
 
-## 2.3 if else if 语句 （与 C# 相同）
+- 含义：用于多条件分支选择，比多个 if-else 更清晰
+- 基础语法：
 
-## 2.4 switch 语句 （与 C# 相同）
+```js
+switch (表达式) {
+  case 值1:
+    // 当表达式结果等于值1时执行
+    break;
+  case 值2:
+    // 当表达式结果等于值2时执行
+    break;
+  default:
+  // 当没有匹配的case时执行
+}
+```
 
-## 2.5 for 语句 （与 C# 相同）
+- 特点：
 
-## 2.6 while 语句 （与 C# 相同）
+  - 使用 break 防止"穿透"（继续执行下一个 case）
+  - case 值可以是常量表达式
+  - 严格比较（===）
+
+- 例子：
+
+```js
+var day = 3;
+var dayName;
+
+switch (day) {
+  case 1:
+    dayName = "星期一";
+    break;
+  case 2:
+    dayName = "星期二";
+    break;
+  case 3:
+    dayName = "星期三"; // 这里会执行
+    break;
+  default:
+    dayName = "未知";
+}
+```
+
+## 2.5 for 语句
+
+- 含义：用于循环执行代码块
+- 基础语法：
+
+```js
+for (初始化; 条件; 迭代) {
+  // 循环体
+}
+```
+
+- 变体：
+  - 可以省略初始化（如果已在外部声明）
+  - 可以省略迭代部分（需在循环体内处理）
+  - 可以省略所有部分，创建无限循环
+- 例子：
+
+```js
+// 基本用法
+for (var i = 0; i < 5; i++) {
+  console.log(i); // 输出0,1,2,3,4
+}
+
+// 遍历数组
+var arr = [10, 20, 30];
+for (var i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
+}
+
+// 无限循环
+for (;;) {
+  // 需要内部有break条件
+}
+```
+
+## 2.6 while 语句
+
+- 含义：当条件为真时重复执行代码块
+- 基础语法：
+
+```js
+while (条件) {
+  // 循环体
+}
+```
+
+- 变体(do-while：确保至少执行一次)
+
+```js
+do {
+  // 循环体
+} while (条件);
+```
+
+- 注意事项：
+
+  - 必须有改变条件的语句，否则会无限循环
+  - 适合不确定循环次数的场景
+
+- 例子：
+
+```js
+// 基本while
+var i = 0;
+while (i < 5) {
+  console.log(i); // 输出0,1,2,3,4
+  i++;
+}
+
+// do-while
+var j = 0;
+do {
+  console.log(j); // 至少输出一次0
+  j++;
+} while (j < 5);
+
+// 读取输入直到满足条件
+var input;
+while (input !== "quit") {
+  input = prompt("输入quit退出");
+}
+```
 
 # 3. break 和 continue
 
 ## 3.1 break 语句
 
-1. 解释：跳出循环
+2. 特点：
+   - 立即终止当前循环
+   - 在嵌套循环中，只跳出最内层循环
+   - 在 switch 中用于防止 case 穿透
+3. 语法：
+
+```js
+break;
+```
+
+4. 使用场景：
+
+- 循环中找到目标后提前退出
+- switch 语句中每个 case 结束
+
+- 例子：
+
+```JS
+// 在for循环中使用
+for(var i = 0; i < 10; i++) {
+  if(i === 5) {
+    break; // 当i等于5时跳出循环
+  }
+  console.log(i); // 输出0,1,2,3,4
+}
+
+// 在switch中使用
+var fruit = 'apple';
+switch(fruit) {
+  case 'banana':
+    console.log('香蕉');
+    break;
+  case 'apple':
+    console.log('苹果'); // 输出"苹果"
+    break;
+  default:
+    console.log('未知水果');
+}
+```
 
 ## 3.2 continue 语句
 
-1. 解释：中断当前循环，执行下一次循环
+1. 解释：跳过当前循环的剩余语句，直接进入下一次循环
+2. 特点：
+
+- 不会终止整个循环 , 只是跳过当前迭代
+- 在 while 循环中需要注意可能造成无限循环
+
+3. 语法
+
+```js
+continue;
+```
+
+4. 使用场景：
+
+- 跳过某些特定条件的迭代
+- 过滤不需要处理的数据
+
+5. 例子：
+
+```js
+// 跳过偶数
+for (var i = 0; i < 10; i++) {
+  if (i % 2 === 0) {
+    continue; // 跳过偶数
+  }
+  console.log(i); // 输出1,3,5,7,9
+}
+
+// 在while循环中使用
+var n = 0;
+while (n < 5) {
+  n++;
+  if (n === 3) {
+    continue; // 跳过n=3的迭代
+  }
+  console.log(n); // 输出1,2,4,5
+}
+```
+
+## 3.3 对比总结
+
+| 特性         | break        | continue         |
+| ------------ | ------------ | ---------------- |
+| 作用         | 完全终止循环 | 跳过当前迭代     |
+| 循环后续执行 | 不再执行     | 继续下一次迭代   |
+| 使用场景     | 提前退出循环 | 过滤特定条件迭代 |
+| switch 语句  | 必须使用     | 不能使用         |
 
 # 4. 数组
 
