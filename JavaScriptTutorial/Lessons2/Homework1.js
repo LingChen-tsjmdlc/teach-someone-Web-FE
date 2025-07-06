@@ -51,7 +51,7 @@ var numbers = [1, 2, 3, 4, 5];
 var result = [];
 
 // 你的练习题2代码写在这里
-for (i = 0; i < numbers.length; i++) {
+for (var i = 0; i < numbers.length; i++) {
   if (numbers[i] % 2 == 1) {
     numbers[i] = "odd"
     result.push(numbers[i])
@@ -93,7 +93,28 @@ var password = "Abc12345";
 var isValid;
 
 // 你的练习题3代码写在这里
+var hasUpperCase = false;
+var hasNumber = false;
+if (password.length < 8) {
+  isValid = false
+}
+else {
+  for (var i = 0; i < password.length; i++) {
+    if (password[i] >= 'A' && password[i] <= 'Z') {
+      hasUpperCase = true
+    }
+    else if (password[i] >= '0' && password[i] <= '9') {
+      hasNumber = true
+    }
+  }
+}
 
+if (hasNumber && hasUpperCase) {
+  isValid = true
+}
+else {
+  isValid = false
+}
 console.log(isValid); // 应输出true
 
 
@@ -117,6 +138,18 @@ var n = 7;
 var i = 0;
 
 // 你的练习题4代码写在这里
+while (i < n) {
+  if (i === 0) {
+    fib.push(0)
+  }
+  else if (i === 1) {
+    fib.push(1)
+  }
+  else {
+    fib.push(fib[i - 1] + fib[i - 2])
+  }
+  i++
+}
 
 console.log(fib); // 应输出[0, 1, 1, 2, 3, 5, 8]
 
@@ -145,5 +178,21 @@ var averageAge = 0; // 平均年龄
 var topStudent = "";  // 尖子生的名称
 
 // 你的练习题5代码写在这里
-
+var max
+var maxname
+var sum = 0
+for (i = 0; i < students.length; i++) {
+  if (i === 0) {
+    max = students[0].score
+    maxname = students[0].name
+  }
+  else if (students[i].score > max) {
+    max = students[i].score
+    maxname = students[i].name
+  }
+  sum += students[i].age
+}
+averageAge = sum / students.length
+result.averageAge = averageAge
+result.topStudent = maxname
 console.log(result); // 应输出{averageAge: 20, topStudent: "Bob"}
