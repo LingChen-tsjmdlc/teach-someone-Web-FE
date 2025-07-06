@@ -11,7 +11,28 @@ var score = 85;
 var grade;
 
 // 你的练习题1代码写在这里
+var test = parseInt(score / 10)
+switch (test) {
+  case 10:
+  case 9:
+    grade = "A"
+    break
+  case 8:
+    grade = "B"
+    break
+  case 7:
+    grade = "C"
+    break
+  case 6:
+    grade = "D"
+    break
 
+  default:
+    grade = "E"
+    break
+
+
+}
 console.log(grade); // 应输出"B"
 
 
@@ -30,6 +51,18 @@ var numbers = [1, 2, 3, 4, 5];
 var result = [];
 
 // 你的练习题2代码写在这里
+for (i = 0; i < numbers.length; i++) {
+  if (numbers[i] % 2 == 1) {
+    numbers[i] = "odd"
+    result.push(numbers[i])
+  }
+  else {
+    numbers[i] = "even"
+    result.push(numbers[i])
+  }
+
+}
+
 
 console.log(result); // 应输出["odd", "even", "odd", "even", "odd"]
 
