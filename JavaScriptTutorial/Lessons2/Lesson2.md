@@ -451,6 +451,10 @@ while (n < 5) {
 
 ## 4.1 创建数组
 
+JavaScript 创建数组的几种方式：
+
+1. 使用 Array 构造函数：
+
 ```JS
 var myArry = new Array();
 myArry[0] = "a"
@@ -458,7 +462,111 @@ myArry[0] = "a"
 var myArry1 = new Array("a","b","c");
 ```
 
-# 5. JSON 对象
+2. 使用数组字面量（推荐）：
+
+```js
+var colors = ["red", "green", "blue"];
+var emptyArray = [];
+```
+
+3. 创建指定长度的数组：
+
+```js
+var fixedLengthArray = new Array(5); // 创建长度为5的空数组
+```
+
+## 4.2 数组的基本操作
+
+### 1. 访问元素
+
+```js
+var fruits = ["Apple", "Banana", "Orange", "Mango", "Pear"];
+console.log(fruits[0]); // 输出 "Apple"
+console.log(fruits.length); // 输出 3
+```
+
+### 2. 修改元素
+
+```js
+fruits[1] = "Pear"; // 修改第二个元素
+```
+
+### 3. 添加元素
+
+```JS
+// 添加到数组末尾
+fruits.push("Mango");
+
+// 添加到数组开头
+fruits.unshift("Strawberry");
+```
+
+## 4.3 数组的常用方法
+
+### 1. 删除元素
+
+```js
+// 删除最后一个元素
+var last = fruits.pop();
+
+// 删除第一个元素
+var first = fruits.shift();
+```
+
+### 2. 查找元素
+
+```js
+var position = fruits.indexOf("Banana"); // 返回索引或-1
+```
+
+### 3. 切片和拼接
+
+```js
+// 切片
+var citrus = fruits.slice(1, 3); // ["Banana", "Orange"]
+// 拼接
+var removedItems = fruits.splice(1, 2, "Lemon", "Kiwi");
+// ["Apple","Lemon", "Kiwi" , "Mango", "Pear"]
+```
+
+## 4.4 数组遍历
+
+### 1. for 循环
+
+```js
+for (var i = 0; i < fruits.length; i++) {
+  console.log(fruits[i]);
+}
+```
+
+### 2. forEach 方法(常用)
+
+```JS
+fruits.forEach(function(item, index) {
+  console.log(index, item);
+});
+```
+
+### 3. map 方法
+
+```js
+var lengths = fruits.map(function (item) {
+  return item.length;
+});
+```
+
+## 4.5 多维数组
+
+```js
+var matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
+console.log(matrix[1][1]); // 输出 5
+```
+
+# 5. JSON 对象 s
 
 ## 5.1 Json 数据
 
@@ -470,7 +578,7 @@ var myArry1 = new Array("a","b","c");
 1. 将 Json 数据放到大括号中 2.例子:
 
 ```JSON
- a: {"name" : "AAA", "age" : 132, "qwe": {"q": 111} }
+a: {"name" : "AAA", "age" : 132, "qwe": {"q": 111} }
 ```
 
 # 6. 方法/函数
