@@ -585,7 +585,7 @@ a: {"name" : "AAA", "age" : 132, "qwe": {"q": 111} }
 
 ## 6.1 关键词
 
-`function`
+**`function`**
 
 ## 6.2 语法
 
@@ -595,12 +595,17 @@ function functionName(){
 }
 
 // 带参数
-function functionName(var a,var b){
+function functionName(a,b){
+  // 代码块
+}
+
+// 箭头函数
+var functionName = (param1,param2) => {
   // 代码块
 }
 ```
 
-## 6.3 退出函数
+## 6.3 退出函数/返回值
 
 `return`
 
@@ -611,6 +616,9 @@ function functionName(var a,var b){
   {
     return a*b;
   }
+  // const myFunction = (a,b) => {
+  //    return a*b;
+  // }
 
   num = myFunction(3,5) // 15
 ```
