@@ -161,7 +161,7 @@ d = false   // 报错，不能将类型“boolean”分配给“number”
 
   ```TS
   //设置a的类型为unknown
-  let a: any
+  let a: unknown
 
   //以下对a的赋值，均正常
   a = 100
@@ -170,7 +170,7 @@ d = false   // 报错，不能将类型“boolean”分配给“number”
 
   // 设置x的数据类型为string
   let x: string
-  x = a//警告：不能将类型“unknown'”分配给类型“string”
+  x = a//警告：不能将类型“unknown”分配给类型“string”
   ```
 
 - `unknown` 会强制开发者在使用之前进行类型检查
@@ -303,6 +303,8 @@ d = false   // 报错，不能将类型“boolean”分配给“number”
 
   ```TS
   let arr3:[number, ...string[]]
+
+
   //第一个元素必须是string类型，第二个元素必须是number类型:
   let arr1:[string,number]
   //第一个元素必须是number类型，第二个元素是可选的，如果存在，必须是boolean类型:
@@ -316,7 +318,7 @@ d = false   // 报错，不能将类型“boolean”分配给“number”
   arr3 = [10, 'hello'，'world']
   arr3 = [10]
   //不可以赋值，arr1声明时是两个元素，赋直的是三个
-  arr1 = ['hello',123,fa1se]
+  arr1 = ['hello',123,false]
   ```
 
 ## 7. enum
@@ -559,6 +561,7 @@ interface Admin {
   admin: boolean;
 }
 
+// 使用示例
 const user2: Admin = {
   info: {
     id: 1,
@@ -569,7 +572,6 @@ const user2: Admin = {
   admin: true,
 };
 
-// 使用示例
 const user1: User = {
   id: 1,
   name: "张三",

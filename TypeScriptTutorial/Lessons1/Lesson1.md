@@ -24,6 +24,11 @@ message.toupercase()  // 拼写错误
 
 ```bash
 npm i typescript -g
+
+# 包管理器：npm, yarn, pnpm ,bun
+npm install -g pnpm
+npm install -g yarn
+npm install -g bun
 ```
 
 ## 2. 自动化编译 ts
