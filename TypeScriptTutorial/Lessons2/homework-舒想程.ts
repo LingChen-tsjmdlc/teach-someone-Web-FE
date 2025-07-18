@@ -14,7 +14,9 @@
 // console.log(longest({ length: 3 }, { length: 5 })); // 应输出 { length: 5 }
 
 
-
+function longest<T extends { length: number }>(a: T, b: T): T {
+  return a.length >= b.length ? a : b;
+}
 
 
 
@@ -59,14 +61,97 @@
 
 
 
+/**
+* 商品基础接口定义
+* @property id - 商品唯一标识符(string)
+* @property name - 商品名称(string)
+* @property price - 商品价格(number)
+*/
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+}
 
+/**
+* 购物车商品项接口
+* @property product - 商品信息(Product)
+* @property quantity - 商品数量(number)
+*/
+interface CartItem {
+  product: Product;
+  quantity: number;
+}
 
+/**
+* 折扣类型联合定义
 
+* @property {'fixed'} type - 固定金额折扣类型标识
+* @property {number} amount - 固定折扣金额
+* @example { type: 'fixed', amount: 50 } // 减50元
+*
+* @property {'percentage'} type - 百分比折扣类型标识
+* @property {number} value - 折扣比例(0-1)
+* @example { type: 'percentage', value: 0.8 } // 打8折
+*
+* @property {'threshold'} type - 满减折扣类型标识
+* @property {number} threshold - 满减门槛金额
+* @property {number} amount - 满减金额
+* @example { type: 'threshold', threshold: 300, amount: 50 } // 满300减50
+*/
+type Discount =
+  | { type: 'fixed'; amount: number }
+  | { type: 'percentage'; value: number }
+  | { type: 'threshold'; threshold: number; amount: number };
 
+/**
+* 购物车接口
+* @property items - 购物车商品项列表(CartItem[])
+* @property discounts - 应用的折扣列表(Discount[])
+*/
+interface Cart {
+  items: CartItem[];
+  discounts: Discount[];
+}
 
-
-
-
+/**
+* 计算购物车最终总价（含折扣计算）
+* @param cart - 购物车对象
+* @returns 计算折扣后的最终总价(number)
+*
+* 实现逻辑：
+* 1. 首先计算商品原始总价(subtotal)：
+*    - 使用reduce遍历所有购物车商品项
+*    - 累加每个商品的价格×数量
+* 2. 然后应用所有折扣：
+*    - 使用reduce依次处理每个折扣
+*    - 根据折扣类型执行不同计算：
+*      - 'fixed': 直接减去固定金额
+*      - 'percentage': 乘以折扣比例
+*      - 'threshold': 判断是否达到门槛金额，满足则减去指定金额
+*/
+function calculateTotal(cart: Cart): number {
+  // 计算商品原始总价
+  const subtotal = cart.items.reduce((sum, item) => {
+    return sum + (item.product.price * item.quantity);
+  }, 0);
+  // 应用所有折扣
+  return cart.discounts.reduce((currentTotal, discount) => {
+    switch (discount.type) {
+      case 'fixed':
+        // 固定金额折扣：直接减去指定金额
+        return currentTotal - discount.amount;
+      case 'percentage':
+        // 百分比折扣：乘以折扣比例
+        return currentTotal * discount.value;
+      case 'threshold':
+        // 满减折扣：达到门槛金额则减去指定金额
+        return currentTotal >= discount.threshold
+          ? currentTotal - discount.amount
+          : currentTotal;
+    }
+  }, subtotal);
+}
 
 
 /**
@@ -118,16 +203,39 @@
 
 
 
+// 权限类型定义
+type Permission = 'read' | 'write' | 'delete' | 'manage_users';
 
+// 角色定义
+interface Role {
+  name: string;
+  permissions: Permission[];
+}
 
+// 用户接口
+interface User {
+  id: string;
+  name: string;
+  roles: Role[];
+}
 
-
-
-
-
-
-
-
+/**
+ * 检查用户是否拥有指定权限
+ * @param user - 用户对象，包含角色信息
+ * @param permission - 要检查的权限项
+ * @returns 如果用户任意一个角色拥有该权限则返回true，否则返回false
+ *
+ * 实现逻辑：
+ * 1. 遍历用户的所有角色(user.roles)
+ * 2. 对每个角色检查其权限列表(role.permissions)
+ * 3. 使用Array.some()方法，只要有一个角色拥有该权限就返回true
+ * 4. 使用Array.includes()方法检查权限是否存在于角色权限列表中
+ */
+function hasPermission(user: User, permission: Permission): boolean {
+  return user.roles.some(role =>
+    role.permissions.includes(permission)
+  );
+}
 
 
 
@@ -155,8 +263,20 @@
 
 
 
+// 定义API响应类型
+interface ApiResponse<T> {
+  success: boolean;
+  data: T;
+}
 
-
+// 处理API响应
+function handleResponse<T>(response: ApiResponse<T>): T {
+  if (response.success) {
+    return response.data;
+  } else {
+    throw new Error("API请求失败");
+  }
+}
 
 
 
@@ -167,15 +287,15 @@
  * 1. 定义以下接口：
  *    - Product：包含 id(string)、name(string) 和 price(number) 属性
  *    - CartItem：包含 product(Product) 和 quantity(number) 属性
- *    - Cart：包含 items(CartItem数组) 和 totalPrice(number) 属性
- *    - UserShop：包含 username(string) 和 cart(Cart) 属性
+ *    - Cart1：包含 items(CartItem数组) 和 totalPrice(number) 属性
+ *    - UserShop：包含 username(string) 和 cart(Cart1) 属性
  * 2. 实现以下功能函数：
  *    - createUser(username: string): UserShop：创建一个新用户，初始化空购物车
  *    - addToCart(user: UserShop, product: Product, quantity: number = 1): void：添加商品到购物车
  *        · 如果商品已存在，增加数量
  *        · 如果商品不存在，添加新项
  *        · 每次更新后重新计算总价
- *    - getCartTotal(cart: Cart): number：计算购物车中所有商品的总价
+ *    - getCartTotal(cart: Cart1): number：计算购物车中所有商品的总价
  */
 
 // 测试用例:
@@ -197,3 +317,75 @@
   }
 }
 */
+
+// 定义商品接口
+interface Product {
+  id: string;       // 商品唯一标识符
+  name: string;     // 商品名称
+  price: number;    // 商品价格
+}
+
+// 定义购物车项接口
+interface CartItem {
+  product: Product;  // 商品信息
+  quantity: number;  // 商品数量
+}
+
+// 定义购物车接口
+interface Cart1 {
+  items: CartItem[];    // 购物车中的商品项列表
+  totalPrice: number;   // 购物车总金额
+}
+
+// 定义用户商店接口
+interface UserShop {
+  username: string;  // 用户名
+  cart: Cart1;       // 用户的购物车
+}
+
+/**
+ * 创建新用户
+ * @param username 用户名
+ * @returns 返回一个新用户对象，包含初始化的空购物车
+ */
+function createUser(username: string): UserShop {
+  return {
+    username,
+    cart: {
+      items: [],      // 初始购物车为空
+      totalPrice: 0,  // 初始总金额为0
+    }
+  };
+}
+
+/**
+ * 添加商品到购物车
+ * @param user 用户对象
+ * @param product 要添加的商品
+ * @param quantity 商品数量，默认为1
+ */
+function addToCart(user: UserShop, product: Product, quantity: number = 1): void {
+  // 检查购物车中是否已存在该商品
+  const existingItem = user.cart.items.find(item => item.product.id === product.id);
+  if (existingItem) {
+    // 如果已存在，增加数量
+    existingItem.quantity += quantity;
+  } else {
+    // 如果不存在，添加新商品项
+    user.cart.items.push({ product, quantity });
+  }
+  // 更新购物车总金额
+  user.cart.totalPrice = getCartTotal(user.cart);
+}
+
+/**
+ * 计算购物车总金额
+ * @param cart 购物车对象
+ * @returns 返回购物车中所有商品的总金额
+ */
+function getCartTotal(cart: Cart1): number {
+  return cart.items.reduce((total, item) => {
+    // 累加每个商品项的价格×数量
+    return total + (item.product.price * item.quantity);
+  }, 0);  // 初始值为0
+}
