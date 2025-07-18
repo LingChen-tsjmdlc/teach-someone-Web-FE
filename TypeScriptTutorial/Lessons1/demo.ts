@@ -1,4 +1,12 @@
-const person = {
+interface Person {
+  name: string;
+  age: number;
+  email?: string;
+}
+
+type P = Person;
+
+const person: P = {
   name: "李四",
   age: 18,
 };
