@@ -167,15 +167,15 @@
  * 1. 定义以下接口：
  *    - Product：包含 id(string)、name(string) 和 price(number) 属性
  *    - CartItem：包含 product(Product) 和 quantity(number) 属性
- *    - Cart：包含 items(CartItem数组) 和 totalPrice(number) 属性
- *    - UserShop：包含 username(string) 和 cart(Cart) 属性
+ *    - Cart1：包含 items(CartItem数组) 和 totalPrice(number) 属性
+ *    - UserShop：包含 username(string) 和 cart(Cart1) 属性
  * 2. 实现以下功能函数：
  *    - createUser(username: string): UserShop：创建一个新用户，初始化空购物车
  *    - addToCart(user: UserShop, product: Product, quantity: number = 1): void：添加商品到购物车
  *        · 如果商品已存在，增加数量
  *        · 如果商品不存在，添加新项
  *        · 每次更新后重新计算总价
- *    - getCartTotal(cart: Cart): number：计算购物车中所有商品的总价
+ *    - getCartTotal(cart: Cart1): number：计算购物车中所有商品的总价
  */
 
 // 测试用例:
