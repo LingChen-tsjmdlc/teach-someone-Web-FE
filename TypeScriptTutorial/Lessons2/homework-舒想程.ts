@@ -13,9 +13,11 @@
 // console.log(longest("apple", "banana"));     // 应输出 "banana"
 // console.log(longest({ length: 3 }, { length: 5 })); // 应输出 { length: 5 }
 
+function longest<T extends { length: number }>(a: T, b: T): T {
+  return a.length >= b.length ? a : b
+}
 
-
-
+console.log(longest([1, 2], [3, 4, 5]));
 
 
 
@@ -58,14 +60,68 @@
 // console.log(calculateTotal(cart)); // 应输出 (2999 + 199 * 2)*0.9 - 300 = 2699.1
 
 
+interface Product {
+  id: string,
+  name: string,
+  price: number
+}
 
 
+interface CartItem {
+  product: Product,
+  quantity: number
+}
 
+interface FixedDiscount {
+  type: 'fixed',
+  amount: number
+}
 
+interface PercentageDiscount {
+  type: 'percentage',
+  value: number
+}
 
+interface ThresholdDiscount {
+  type: 'threshold',
+  threshold: number,
+  amount: number
+}
 
+type Discount = FixedDiscount | PercentageDiscount | ThresholdDiscount
 
+interface Cart {
+  items: CartItem[];
+  discounts: Discount[];
+}
 
+function calculateTotal(zk: Cart): number {
+  let sum: number = 0
+  for (let i: number = 0; i < zk.items.length; i++) {
+    const item = zk.items[i]
+    sum += item.product.price * item.quantity
+  }
+  for (const discount of zk.discounts) {
+    if (sum !== 0) {
+      switch (discount.type) {
+        case 'fixed':
+          sum -= discount.amount
+          break
+
+        case 'percentage':
+          sum *= discount.value
+          break
+
+        case 'threshold':
+          if (sum >= discount.threshold) {
+            sum -= discount.amount
+          }
+          break
+      }
+    }
+  }
+  return sum
+}
 
 
 
@@ -117,9 +173,27 @@
 // console.log(hasPermission(user3, 'write'));       // false
 
 
+type Permission = 'read' | 'write' | 'delete' | 'manage_users'
 
+interface Role {
+  name: string,
+  permissions: Permission[]
+}
 
+interface User {
+  id: string,
+  name: string,
+  roles: Role[]
+}
 
+function hasPermission(user: User, perm: Permission): boolean {
+  for (const ro of user.roles) {
+    if (ro.permissions.includes(perm)) {
+      return true
+    }
+  }
+  return false
+}
 
 
 
@@ -153,7 +227,22 @@
 // console.log(handleResponse(successResponse)); // "请求成功"
 // console.log(handleResponse(errorResponse)); // 抛出错误 -> "API请求失败"
 
+interface ApiResponse<T> {
+  success: boolean,
+  data: T
+}
 
+function handleResponse<T>(api: ApiResponse<T>): T {
+  if (api.success) {
+    return api.data
+  }
+  else {
+    const errorMessage = typeof api.data === 'string'
+      ? api.data
+      : 'API 请求失败';
+    throw new Error(errorMessage)
+  }
+}
 
 
 
@@ -197,3 +286,62 @@
   }
 }
 */
+interface Product {
+  id: string,
+  name: string,
+  price: number
+}
+
+interface CartItem {
+  product: Product,
+  quantity: number
+}
+
+interface Cart1 {
+  items: CartItem[],
+  totalPrice: number
+}
+
+interface UserShop {
+  username: string,
+  cart: Cart1
+}
+
+function createUser(username: string): UserShop {
+  return {
+    username,
+    cart: {
+      items: [],
+      totalPrice: 0
+    }
+  }
+}
+
+function addToCart(user: UserShop, product: Product, quantity: number = 1): void {
+
+  let isExist = false
+
+  for (let i = 0; i < user.cart.items.length; i++) {
+    const item = user.cart.items[i]
+    if (item.product.id === product.id) {
+      item.quantity += quantity;
+      isExist = true;
+      break;
+    }
+  }
+
+  if (!isExist) {
+    user.cart.items.push({ product, quantity });
+  }
+  user.cart.totalPrice = getCartTotal(user.cart);
+}
+
+
+function getCartTotal(cart: Cart1): number {
+  let total: number = 0
+  for (const item of cart.items) {
+    total += item.product.price * item.quantity
+  }
+  return total
+}
+
