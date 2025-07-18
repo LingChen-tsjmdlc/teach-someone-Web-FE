@@ -73,13 +73,13 @@ interface Lengthwise {
   length: number;
 }
 
-function longest<T extends Lengthwise>(a: T, b: T): T {
+function longest1<T extends Lengthwise>(a: T, b: T): T {
   return a.length >= b.length ? a : b;
 }
 
 // 使用示例
-console.log(longest([1, 2], [3, 4, 5])); // [3, 4, 5]
-console.log(longest("apple", "banana")); // "banana"
+console.log(longest1([1, 2], [3, 4, 5])); // [3, 4, 5]
+console.log(longest1("apple", "banana")); // "banana"
 
 // ----- 题目4：映射类型与实用工具类型 -----
 // 给定一个User接口，创建一个新类型ReadonlyUser
