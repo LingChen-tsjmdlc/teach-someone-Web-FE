@@ -1,42 +1,70 @@
 /*
- * 题目1：回答并替换注释中的 "?"
+一、选择题
+
+1. 以下哪个是合法的变量名？ （  ）
+  A. 123name
+  B. var
+  C. _age
+  D. first name
+
+2. 以下关于变量的描述错误的是： （  ）
+  A. 变量名区分大小写
+  B. 变量可以重复定义不会覆盖
+  C. 变量名不能以数字开头
+  D. 变量是存储数据的容器
+
+3. isNaN("100")的返回结果是： （  ）
+  A. true
+  B. false
+  C. "100"
+  D. 报错
  */
-var a = "123";
-var b = true;
-var c = null;
-var d = "3.14abc";
-var e = undefined;
-
-// 以下表达式的结果是什么？
-console.log(Number(a));     // ? 123
-console.log(parseInt(d));   // ? NaN
-console.log(String(b));     // ? 1
-console.log(typeof c);      // ? number
-console.log(isNaN(d));      // ? flase
-
-// 以下加法运算的结果是什么？
-console.log(a + b);         // ? '1231'
-console.log(b + c);         // ? 1 
-console.log(c + d);         // ? 'null3.14abc'
-console.log(d + e);         // ? '3.14abcundefined' 
-
 
 
 /*
- * 题目2：回答并替换注释中的 "?"
- */
-var x = "Hello";
-var y = 100;
-var z = "50px";
+二、代码分析题
+*/
+// 1. 写出以下代码的输出结果：
+var nameA = "张三";
+nameA = "李四";
+console.log(nameA);
+// 结果是：
 
-// 以下表达式的结果是什么？
-console.log(typeof x);      // ? string
-console.log(typeof y);      // ? number
-console.log(parseInt(z));   // ? NaN
-console.log(isNaN(z));      // ? flase
-console.log(String(y));     // ? "100"
 
-// 执行以下操作后，变量的值和类型是什么？
-var result1 = x + y;            // result1的值和类型是？ number = x + y  number
-var result2 = y + Number(z);    // result2的值和类型是？ number = y + Number(z)  string||bolean
-var result3 = y + parseInt(z);  // result3的值和类型是？ number = y + parseInt(z)  string
+// 2.写出以下代码的输出结果：
+var a = 10;
+var b = "20";
+console.log(typeof a);
+console.log(typeof b);
+// 结果是：
+
+
+// 3. 写出以下代码的输出结果：
+var x;
+console.log(typeof x);
+x = null;
+console.log(typeof x);
+// 结果是：
+
+
+/*
+三、编程题
+*/
+// 1. 编写代码判断以下值是否为数字，并输出结果：
+var isNumber1 = 123
+var isNumber2 = "hello"
+var isNumber3 = "456"
+// 第一题代码写在这里：
+
+
+
+
+
+
+
+
+
+
+// 已知：长方形的长是20，宽是10，有8个这样的长方形
+// 请计算：总长方形的周长和面积，并输出结果
+// 第二题代码写在这里：
