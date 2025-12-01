@@ -55,7 +55,11 @@ var isNumber1 = 123 true
 var isNumber2 = "hello"flase
 var isNumber3 = "456"flase
 // 第一题代码写在这里：
-
+var input1 =20
+var input2 =10
+var input3 =2
+var input4 =8
+console. output = ((input1+input2)*input3)*input4
 
 
 
@@ -68,3 +72,4 @@ var isNumber3 = "456"flase
 // 已知：长方形的长是20，宽是10，有8个这样的长方形
 // 请计算：总长方形的周长和面积，并输出结果
 // 第二题代码写在这里：
+console.output =(input1*input2)*input4
