@@ -1,19 +1,19 @@
 /*
 一、选择题
 
-1. 以下哪个是合法的变量名？ （  ）
+1. 以下哪个是合法的变量名？ （ b）
   A. 123name
   B. var
   C. _age
   D. first name
 
-2. 以下关于变量的描述错误的是： （  ）
+2. 以下关于变量的描述错误的是： （ b ）
   A. 变量名区分大小写
   B. 变量可以重复定义不会覆盖
   C. 变量名不能以数字开头
   D. 变量是存储数据的容器
 
-3. isNaN("100")的返回结果是： （  ）
+3. isNaN("100")的返回结果是： （ b ）
   A. true
   B. false
   C. "100"
@@ -27,23 +27,23 @@
 // 1. 写出以下代码的输出结果：
 var nameA = "张三";
 nameA = "李四";
-console.log(nameA);
+console.log(nameA);"李四"
 // 结果是：
 
 
 // 2.写出以下代码的输出结果：
 var a = 10;
 var b = "20";
-console.log(typeof a);
-console.log(typeof b);
+console.log(typeof a);number
+console.log(typeof b);string
 // 结果是：
 
 
 // 3. 写出以下代码的输出结果：
 var x;
-console.log(typeof x);
+console.log(typeof x);number
 x = null;
-console.log(typeof x);
+console.log(typeof x);null
 // 结果是：
 
 
@@ -51,9 +51,9 @@ console.log(typeof x);
 三、编程题
 */
 // 1. 编写代码判断以下值是否为数字，并输出结果：
-var isNumber1 = 123
-var isNumber2 = "hello"
-var isNumber3 = "456"
+var isNumber1 = 123 true
+var isNumber2 = "hello"flase
+var isNumber3 = "456"flase
 // 第一题代码写在这里：
 
 
