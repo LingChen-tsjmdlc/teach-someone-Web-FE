@@ -70,9 +70,9 @@ console.log(typeof isNumber3) = string
 // 已知：长方形的长是20，宽是10，有8个这样的长方形
 // 请计算：总长方形的周长和面积，并输出结果
 // 第二题代码写在这里：
-var 1 =20
-var 2 =10
-var 3 =8
-var 4 =2
-console.log((1+2)*4*3) =60
-console.log(1*2*3) =1600
+var input1 =20
+var input2 =10
+var input3 =8
+var input4 =2
+console.log((input1+input2)*input4*input3) =60
+console.log(input1*input2*input3) =1600
