@@ -1,7 +1,7 @@
 /*
 一、选择题
 
-1. 以下哪个是合法的变量名？ （ B ）
+1. 以下哪个是合法的变量名？ （ CC ）
   A. 123name
   B. var
   C. _age
@@ -45,7 +45,7 @@ var x;
 console.log(typeof x);
 x = null;
 console.log(typeof x);
-// 结果是：null
+// 结果是：undefind
 
 
 /*
@@ -56,13 +56,10 @@ var isNumber1 = 123
 var isNumber2 = "hello"
 var isNumber3 = "456"
 // 第一题代码写在这里：
-console.log(typeof isNumber1) = number
-console.log(typeof isNumber2) = string
-console.log(typeof isNumber3) = string
-
-
-
-
+console.log(typeof isNumber1) // 输出：num
+console.log(isNaN(isNumber1)) // 输出：true
+console.log(typeof isNumber2)
+console.log(typeof isNumber3)
 
 
 
@@ -70,9 +67,8 @@ console.log(typeof isNumber3) = string
 // 已知：长方形的长是20，宽是10，有8个这样的长方形
 // 请计算：总长方形的周长和面积，并输出结果
 // 第二题代码写在这里：
-var input1 =20
-var input2 =10
-var input3 =8
-var input4 =2
-console.log((input1+input2)*input4*input3) =60
-console.log(input1*input2*input3) =1600
+var input1 = 20
+var input2 = 10
+var input3 = 8
+console.log((input1 + input2) * 2 * input3)
+console.log(input1 * input2 * input3)
