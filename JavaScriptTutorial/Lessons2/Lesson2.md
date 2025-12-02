@@ -156,8 +156,16 @@
 ```JS
   var a = 10
 
-  b = isNaN(a) ? console.log(a) : console.log("为假")
-  // b 的值为 10
+  isNaN(a) ? console.log(a) : console.log("为假")
+  // 值为 10
+
+
+  if (isNaN(a)){
+    console.log(a)
+  }
+  else{
+    console.log("为假")
+  }
 ```
 
 3. 语法：`if的判断条件 ? 为真的时候执行的语句 : 为假的时候执行的语句`
@@ -188,13 +196,11 @@ if (条件) {
 - if-else if 结构
 
 ```js
-if(条件1){
+if (条件1) {
   // 如果条件1成立，就会执行的代码
-}
-if else(条件2){
+} else if (条件2) {
   // 如果条件2成立，就会执行的代码
-}
-else{
+} else {
   // 如果上面条件不成立，就会执行的代码
 }
 ```
@@ -252,7 +258,7 @@ switch (表达式) {
 - 例子：
 
 ```js
-var day = 3;
+var day = 1;
 var dayName;
 
 switch (day) {
@@ -265,7 +271,7 @@ switch (day) {
   case 3:
     dayName = "星期三"; // 这里会执行
     break;
-  default:
+  default: // default 这个单词是 "默认" 的意思
     dayName = "未知";
 }
 ```
@@ -277,6 +283,18 @@ switch (day) {
 
 ```js
 for (初始化; 条件; 迭代) {
+  // 循环体
+}
+for (; 条件; 迭代) {
+  // 循环体
+}
+for (初始化; 条件; ) {
+  // 循环体
+}
+for (初始化; ; 迭代) {
+  // 循环体
+}
+for (;;) {
   // 循环体
 }
 ```
@@ -339,17 +357,26 @@ while (i < 5) {
   i++;
 }
 
+var i = 0;
+while (i < 5) {
+  i++;
+  console.log(i); // 输出1，2，3，4，5
+}
+
 // do-while
 var j = 0;
 do {
   console.log(j); // 至少输出一次0
-  j++;
+  j++; // 现在 j 是 1
 } while (j < 5);
 
 // 读取输入直到满足条件
 var input;
 while (input !== "quit") {
   input = prompt("输入quit退出");
+}
+if (input === "quit") {
+  exit();
 }
 ```
 
