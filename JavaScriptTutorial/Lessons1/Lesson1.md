@@ -56,7 +56,7 @@
 ### 2. 变量命名规则
 
 1. 不能以数字开头，不能使用中文。
-2. 不能是关键字（如 `var`、`function`）或保留字。
+2. 不能是关键字（如 `var`、`function`、`const`）或保留字。
 3. 不能包含空格。
 4. 允许使用字母、数字、下划线、`$`。
 5. 建议使用语义化的唯一名称。
@@ -153,7 +153,7 @@
 - 示例：
   ```javascript
   console.log(parseFloat("1.22df")); // 1.22
-  console.log(parseFloat("1.3.4.5")); // 1.3
+  console.log(parseFloat("1.3234.4.5")); // 1.3234
   console.log(parseFloat("h34")); // NaN
   ```
 
