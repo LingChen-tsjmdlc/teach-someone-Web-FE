@@ -153,7 +153,7 @@
 - 示例：
   ```javascript
   console.log(parseFloat("1.22df")); // 1.22
-  console.log(parseFloat("1.3.4.5")); // 1.3
+  console.log(parseFloat("1.3234.4.5")); // 1.3234
   console.log(parseFloat("h34")); // NaN
   ```
 
