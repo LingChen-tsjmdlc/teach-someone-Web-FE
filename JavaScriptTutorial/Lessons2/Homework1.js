@@ -47,10 +47,10 @@
 var a = 10;
 var b = "5";
 var c = true;
-console.log(a + b);          // 结果1：_____105_____________________
+console.log(a + b);          // 结果1：_____"105"_____________________
 console.log(a + Number(b));  // 结果2：_____15_____________________
 console.log(a + c);          // 结果3：_____11_____________________
-console.log(b + c);          // 结果4：_____51____________________
+console.log(b + c);          // 结果4：_____"5true"____________________
 
 /* ----------------------------------- 题目分割线 ------------------------------------- */
 
@@ -61,7 +61,7 @@ var z = "3";
 console.log(x === "10");       // 结果1：___true_______________________
 console.log(y == "5");         // 结果2：___true_______________________
 console.log(parseInt(z) + y);  // 结果3：___8_______________________
-console.log(x + z);            // 结果4：___103_______________________
+console.log(x + z);            // 结果4：___"103"_______________________
 
 
 
@@ -78,9 +78,9 @@ console.log(x + z);            // 结果4：___103_______________________
 // - 将布尔值true转换为字符串
 // - 判断"hello"是否能转换为有效数字
 
-console.log(parseFloat("123.45"))；123.45
-true.toString();true
-console.log(isNaN("hello");flase
+console.log(parseFloat("123.45")) // 123.45
+true.toString(); true
+console.log(isNaN("hello"))  // flase
 
 
 
@@ -98,12 +98,12 @@ console.log(isNaN("hello");flase
 // 请用JavaScript计算并输出：
 // - 每次操作后小明的余额
 // - 最终小明还剩多少钱
-var a = 100 
+var a = 100
 var b = 25.5
-var c =50
-console.log(a-b);74.5
-console.log((a-b)+c);124.5
-console.log((a-b)+c)/3;41.5
+var c = 50
+console.log(a - b); 74.5
+console.log((a - b) + c); 124.5
+console.log((a - b) + c) / 3; 41.5
 
 
 

@@ -50,7 +50,7 @@ var c = true;
 console.log(a + b);          // 结果1：____"105"______________________
 console.log(a + Number(b));  // 结果2：______15____________________
 console.log(a + c);          // 结果3：______11____________________
-console.log(b + c);          // 结果4：______"51"____________________
+console.log(b + c);          // 结果4：______"5true"____________________
 
 /* ----------------------------------- 题目分割线 ------------------------------------- */
 
@@ -61,7 +61,7 @@ var z = "3";
 console.log(x === "10");       // 结果1：____true______________________
 console.log(y == "5");         // 结果2：____true______________________
 console.log(parseInt(z) + y);  // 结果3：____8______________________
-console.log(x + z);            // 结果4：____103______________________
+console.log(x + z);            // 结果4：____"103"______________________
 
 
 
@@ -79,7 +79,7 @@ console.log(x + z);            // 结果4：____103______________________
 // - 判断"hello"是否能转换为有效数字
 console.log(parseFloat("123.45"))
 String(true)
-var n1 = hello
+var n1 = "hello"
 console.log(isNaN(n1))
 
 
@@ -99,12 +99,12 @@ console.log(isNaN(n1))
 // 请用JavaScript计算并输出：
 // - 每次操作后小明的余额
 // - 最终小明还剩多少钱
-var input1 =100
-var input2 =25.5
-var input3 =50
-console.log(input1-input2)
-console.log((input1-input2)+input3)
-console.log(((input1-input2)+input3)*1/3)
+var input1 = 100
+var input2 = 25.5
+var input3 = 50
+console.log(input1 - input2)
+console.log((input1 - input2) + input3)
+console.log(((input1 - input2) + input3) * 1 / 3)
 
 
 
