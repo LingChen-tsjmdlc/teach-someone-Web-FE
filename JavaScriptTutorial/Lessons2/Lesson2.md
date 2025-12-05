@@ -509,7 +509,8 @@ var fixedLengthArray = new Array(5); // 创建长度为5的空数组
 ```js
 var fruits = ["Apple", "Banana", "Orange", "Mango", "Pear"];
 console.log(fruits[0]); // 输出 "Apple"
-console.log(fruits.length); // 输出 3
+console.log(fruits[2]); // 输出 "Orange"
+console.log(fruits.length); // 输出 5
 ```
 
 ### 2. 修改元素
@@ -534,16 +535,16 @@ fruits.unshift("Strawberry");
 
 ```js
 // 删除最后一个元素
-var last = fruits.pop();
+fruits.pop();
 
 // 删除第一个元素
-var first = fruits.shift();
+fruits.shift();
 ```
 
 ### 2. 查找元素
 
 ```js
-var position = fruits.indexOf("Banana"); // 返回索引或-1
+var position = fruits.indexOf("Banana"); // 返回索引（所以说这里返回是1)或-1
 ```
 
 ### 3. 切片和拼接
@@ -569,18 +570,176 @@ for (var i = 0; i < fruits.length; i++) {
 ### 2. forEach 方法(常用)
 
 ```JS
-fruits.forEach(function(item, index) {
-  console.log(index, item);
+fruits.forEach((item, index, array) => {
+  console.log(item, index, array);
 });
 ```
+
+- 参数讲解:
+
+| 参数位置 | 参数名 | 含义                     | 是否可选               |
+| -------- | ------ | ------------------------ | ---------------------- |
+| 1        | item   | 当前遍历到的数组元素     | 必选，但参数名可自定义 |
+| 2        | index  | 当前元素的索引（0 开始） | 可选                   |
+| 3        | array  | 正在遍历的数组本身       | 可选                   |
 
 ### 3. map 方法
 
 ```js
-var lengths = fruits.map(function (item) {
-  return item.length;
+var fruits = ["apple", "banana", "orange"];
+var lengths = fruits.map((item, index, array) => {
+  console.log(item, index, array);
+  return item.length; // lengths 的结果是 [5, 6, 6]
 });
 ```
+
+### 【补充: return 关键字——还东西用的】
+
+#### 补 1. 当前学过的两种方法对比
+
+| 方法        | 要不要 return | 为什么               |
+| ----------- | ------------- | -------------------- |
+| **map**     | ✅ **必须**   | 要"还"新值组成新数组 |
+| **forEach** | ❌ **不要**   | 只是做事，不"还"东西 |
+
+#### 补 2.【示例对比】
+
+```javascript
+var fruits = ["apple", "banana", "orange"];
+
+// 1. forEach - 不要 return
+fruits.forEach((item) => {
+  console.log(item); // 只是做事情
+  // 这里写不写 return 都没用
+});
+
+// 2. map - 必须 return
+var lengths = fruits.map((item) => {
+  return item.length; // 必须"还"一个值回去！
+  // 这个值 (lengths) 会成为新数组的元素
+});
+// lengths = [5, 6, 6]
+
+// ❌ 错误写法
+var wrong = fruits.map((item) => {
+  item.length; // 没写 return，结果都是 undefined！
+});
+// wrong = [undefined, undefined, undefined]
+```
+
+#### 记住
+
+**"用 forEach 只看不拿，用 map 看了还要拿回来"**
+
+- **forEach**：像**参观博物馆** - 只看展品，不带走东西
+- **map**：像**购物** - 看中什么，要拿回来（return）结账
+
+## 4.5 数组其他高阶方法
+
+### 4.5.1 filter 方法
+
+```javascript
+// 过滤数组，返回新数组
+var numbers = [1, 2, 3, 4, 5, 6];
+
+// 过滤出偶数
+var evenNumbers = numbers.filter((item, index, array) => {
+  return item % 2 === 0;
+});
+console.log(evenNumbers); // [2, 4, 6]
+
+// 过滤水果名称长度大于2的
+var fruits = ["apple", "kiwi", "banana", "pear"];
+var longFruits = fruits.filter((fruit) => {
+  return fruit.length > 3;
+});
+console.log(longFruits); // ["apple", "banana", "pear"]
+```
+
+- **作用**：过滤数组元素，返回满足条件的新数组
+- **返回值**：新数组（不改变原数组）
+- **回调要求**：必须返回布尔值
+- **参数**：与 forEach 相同
+
+### 4.5.2 find 方法
+
+```javascript
+// 查找第一个符合条件的元素
+var users = [
+  { name: "张三", age: 20 },
+  { name: "李四", age: 25 },
+  { name: "王五", age: 20 },
+];
+
+// 查找年龄为20的第一个用户
+var user = users.find((item, index, array) => {
+  return item.age === 20;
+});
+console.log(user); // { name: "张三", age: 20 }
+
+// 查找水果
+var fruits = ["apple", "banana", "orange"];
+var fruit = fruits.find((item) => {
+  return item.startsWith("b"); // startsWith 就是使用某某开头的意思
+});
+console.log(fruit); // "banana"
+```
+
+- **作用**：查找第一个符合条件的元素
+- **返回值**：找到的元素，找不到返回 undefined
+- **参数**：与 forEach 相同
+
+### 4.5.3 some 方法
+
+```javascript
+// 检查数组中是否至少有一个元素满足条件
+var numbers = [1, 3, 5, 7, 8];
+
+// 检查是否有偶数
+var hasEven = numbers.some((item, index, array) => {
+  return item % 2 === 0;
+});
+console.log(hasEven); // true
+
+// 检查水果中是否有"apple"
+var fruits = ["banana", "orange", "apple"];
+var hasApple = fruits.some((fruit) => {
+  return fruit === "apple";
+});
+console.log(hasApple); // true
+```
+
+- **作用**：检查数组中是否至少有一个元素满足条件
+- **返回值**：布尔值
+- **参数**：与 forEach 相同
+
+### 4.5.4 every 方法
+
+```javascript
+// 检查数组中的所有元素是否都满足条件
+var scores = [85, 90, 92, 88, 95];
+
+// 检查是否所有成绩都及格（>=60）
+var allPass = scores.every((item, index, array) => {
+  return item >= 60;
+});
+console.log(allPass); // true
+```
+
+- **作用**：检查数组中所有元素是否都满足条件
+- **返回值**：布尔值
+- **参数**：与 forEach 相同
+
+### 4.5.6 方法对比总结
+
+| 方法        | 作用       | 返回值                 | 是否改变原数组 | 使用场景         |
+| ----------- | ---------- | ---------------------- | -------------- | ---------------- |
+| **forEach** | 遍历数组   | undefined              | 否             | 单纯的遍历操作   |
+| **map**     | 映射新数组 | 新数组                 | 否             | 数据转换         |
+| **filter**  | 过滤数组   | 新数组                 | 否             | 筛选数据         |
+| **find**    | 查找元素   | 找到的元素或 undefined | 否             | 查找单个元素     |
+| **some**    | 检查条件   | 布尔值                 | 否             | 检查是否存在     |
+| **every**   | 检查所有   | 布尔值                 | 否             | 检查是否全部满足 |
 
 ## 4.5 多维数组
 
@@ -593,12 +752,12 @@ var matrix = [
 console.log(matrix[1][1]); // 输出 5
 ```
 
-# 5. JSON 对象 s
+# 5. JSON 对象
 
 ## 5.1 Json 数据
 
 1. 键值对 `"name" : "AAA"`
-2. 键 : 值
+2. 键 : 值 (key : value)
 
 ## 5.2 Json 对象
 
@@ -608,47 +767,396 @@ console.log(matrix[1][1]); // 输出 5
 a: {"name" : "AAA", "age" : 132, "qwe": {"q": 111} }
 ```
 
-# 6. 方法/函数
+---
 
-## 6.1 关键词
+---
 
-**`function`**
+---
 
-## 6.2 语法
+---
 
-```JS
-function functionName(){
-  // 代码块
+---
+
+# 6. 函数（Function）
+
+## 6.1 函数的概念
+
+**函数**是一段可重复使用的代码块，用于完成特定的任务。
+
+### 为什么需要函数？
+
+1. **代码复用**：避免重复写相同代码
+2. **模块化**：将复杂问题分解为小问题
+3. **提高可读性**：用函数名说明代码功能
+
+## 6.2 函数的定义
+
+### 6.2.1 函数声明（最常用）
+
+```javascript
+// 语法
+function 函数名(参数1, 参数2, ...) {
+  // 要执行的代码
+  return 结果; // 可选
 }
 
-// 带参数
-function functionName(a,b){
-  // 代码块
+// 示例1：无参数函数
+function sayHello() {
+  console.log("你好！");
+  console.log("欢迎学习JavaScript！");
 }
 
-// 箭头函数
-var functionName = (param1,param2) => {
-  // 代码块
+// 示例2：有参数函数
+function greet(name) {
+  console.log("你好，" + name + "！");
+}
+
+// 示例3：有返回值的函数
+function add(a, b) {
+  return a + b;  // 返回计算结果
 }
 ```
 
-## 6.3 退出函数/返回值
+### 6.2.2 函数表达式 (就是来接返回结果的)
 
-`return`
+```javascript
+// 语法
+var 函数名 = function(参数1, 参数2, ...) {
+  // 要执行的代码
+  return 结果;
+};
 
-## 6.4 例子
+// 示例
+var multiply = function(x, y) {
+  return x * y;
+};
+```
 
-```JS
-  function myFunction(a,b)
-  {
-    return a*b;
+### 6.2.3 箭头函数
+
+```javascript
+// 语法
+var 函数名 = (参数1, 参数2, ...) => {
+  // 要执行的代码
+  return 结果;
+};
+
+// 示例
+var divide = (x, y) => {
+  return x / y;
+};
+```
+
+## 6.3 调用函数
+
+```javascript
+// 1. 无参数函数调用
+sayHello();
+// 输出：
+// 你好！
+// 欢迎学习JavaScript！
+
+// 2. 有参数函数调用
+greet("张三"); // 输出：你好，张三！
+
+// 3. 有返回值函数调用
+var result = add(5, 3); // 调用函数并把返回值保存
+console.log(result); // 输出：8
+
+// 4. 直接在表达式中使用
+var total = add(10, 20) + 5; // 30 + 5
+console.log(total); // 输出：35
+```
+
+## 6.4 参数详解
+
+### 6.4.1 形参 vs 实参
+
+```javascript
+// 定义函数时的参数叫"形参"（形式参数）
+function introduce(name, age) {
+  // name, age 是形参
+  console.log("我叫" + name + "，今年" + age + "岁");
+}
+
+// 调用函数时的值叫"实参"（实际参数）
+introduce("李四", 20); // "李四"和20是实参
+```
+
+### 6.4.2 默认参数
+
+```javascript
+// ES6 写法
+function greet(name = "朋友") {
+  // 默认值
+  console.log("你好，" + name);
+}
+
+greet("张三"); // 输出：你好，张三
+greet(); // 输出：你好，朋友
+```
+
+### 6.4.3 参数数量
+
+```javascript
+function showInfo(name, age, city) {
+  console.log("姓名：" + name);
+  console.log("年龄：" + age);
+  console.log("城市：" + city);
+}
+
+// 参数过多会被忽略
+showInfo("张三", 20, "北京", "多余的参数"); // 多出的参数被忽略
+
+// 参数不足会是 undefined
+showInfo("李四");
+// 输出：
+// 姓名：李四
+// 年龄：undefined
+// 城市：undefined
+```
+
+## 6.5 返回值（return）
+
+### 6.5.1 return 的作用
+
+```javascript
+function calculate(x, y) {
+  var sum = x + y;
+  return sum; // 1. 结束函数执行
+  console.log("这行不会执行"); // 2. 返回后面的代码不会执行
+}
+
+var result = calculate(5, 3);
+console.log(result); // 输出：8
+```
+
+### 6.5.2 无 return 的情况
+
+```javascript
+function showMessage() {
+  console.log("没有return的函数");
+  // 默认返回 undefined
+}
+
+var result = showMessage(); // 输出：没有return的函数
+console.log(result); // 输出：undefined
+```
+
+### 6.5.3 返回多个值
+
+```javascript
+// 方法1：返回数组
+function getMinMax(numbers) {
+  var min = Math.min(...numbers);
+  var max = Math.max(...numbers);
+  return [min, max]; // 返回数组
+}
+
+var result = getMinMax([1, 5, 3, 9, 2]);
+console.log("最小值：" + result[0]); // 1
+console.log("最大值：" + result[1]); // 9
+
+// 方法2：返回对象
+function getUserInfo() {
+  return {
+    name: "张三",
+    age: 20,
+    city: "北京",
+  };
+}
+
+var user = getUserInfo();
+console.log(user.name); // 张三
+```
+
+## 6.6 不同写法对比
+
+```javascript
+// 1. 函数声明（最常用）
+function add1(a, b) {
+  return a + b;
+}
+
+// 2. 函数表达式
+var add2 = function (a, b) {
+  return a + b;
+};
+
+// 3. 箭头函数
+var add3 = (a, b) => {
+  return a + b;
+};
+
+// 4. 箭头函数简写（只有一条语句）
+var add4 = (a, b) => a + b;
+
+// 调用方式相同
+console.log(add1(2, 3)); // 5
+console.log(add2(2, 3)); // 5
+console.log(add3(2, 3)); // 5
+console.log(add4(2, 3)); // 5
+```
+
+## 6.7 实际应用示例
+
+### 示例 1：计算器函数
+
+```javascript
+// 计算面积
+function calculateArea(length, width) {
+  return length * width;
+}
+
+// 计算圆的周长
+function calculateCircle(radius) {
+  return 2 * 3.14 * radius;
+}
+
+// 使用
+var roomArea = calculateArea(5, 4);
+console.log("房间面积：" + roomArea + "平方米");
+
+var circleLength = calculateCircle(3);
+console.log("圆的周长：" + circleLength);
+```
+
+### 示例 2：成绩等级判断
+
+```javascript
+function getGrade(score) {
+  if (score >= 90) {
+    return "优秀";
+  } else if (score >= 80) {
+    return "良好";
+  } else if (score >= 60) {
+    return "及格";
+  } else {
+    return "不及格";
   }
-  // const myFunction = (a,b) => {
-  //    return a*b;
-  // }
+}
 
-  num = myFunction(3,5) // 15
+var grade = getGrade(85);
+console.log("成绩等级：" + grade); // 良好
 ```
+
+### 示例 3：数组处理函数
+
+```javascript
+// 找出数组中的最大值
+function findMax(numbers) {
+  var max = numbers[0];
+  for (var i = 1; i < numbers.length; i++) {
+    if (numbers[i] > max) {
+      max = numbers[i];
+    }
+  }
+  return max;
+}
+
+var scores = [85, 92, 78, 95, 88];
+var highest = findMax(scores);
+console.log("最高分：" + highest); // 95
+```
+
+## 6.8 函数与数组方法结合
+
+```javascript
+// 1. 先定义函数
+function square(x) {
+  // square 翻译成中文是 "平方" 的意思
+  return x * x;
+}
+
+function isEven(num) {
+  // 是否为偶数?
+  return num % 2 === 0;
+}
+
+// 2. 在数组方法中使用
+var numbers = [1, 2, 3, 4, 5];
+
+// map 使用函数
+var squares = numbers.map(square);
+console.log(squares); // [1, 4, 9, 16, 25]
+
+// filter 使用函数
+var evens = numbers.filter(isEven);
+console.log(evens); // [2, 4]
+
+// forEach 使用函数
+numbers.forEach(function (num) {
+  console.log("数字：" + num);
+});
+```
+
+## 6.9 常见错误
+
+### 错误 1：忘记调用函数
+
+```javascript
+function sayHi() {
+  console.log("你好");
+}
+
+// ❌ 错误写法
+sayHi; // 没有括号，不会执行
+
+// ✅ 正确写法
+sayHi(); // 输出：你好
+```
+
+### 错误 2：参数类型错误
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+
+// ❌ 字符串相加
+var result1 = add("5", "3"); // "53"（字符串拼接）
+
+// ✅ 数字相加
+var result2 = add(5, 3); // 8
+```
+
+### 错误 3：作用域问题
+
+```javascript
+function calculate() {
+  var x = 10; // 函数内部变量
+  return x;
+}
+
+// console.log(x);  // ❌ 错误：x 在函数外部访问不到
+console.log(calculate()); // ✅ 正确：通过函数访问
+```
+
+## 6.10 练习
+
+```javascript
+// 1. 写一个函数，接收两个数字，返回它们的和
+function add(a, b) {
+  // 代码
+}
+
+// 2. 写一个函数，接收温度（摄氏度），返回华氏度
+// 公式：华氏度 = 摄氏度 × 9/5 + 32
+function toFahrenheit(celsius) {
+  // 代码
+}
+```
+
+## 📊 重点总结
+
+| 概念         | 说明           | 示例                           |
+| ------------ | -------------- | ------------------------------ |
+| **函数定义** | 创建函数       | `function add(a, b) { ... }`   |
+| **函数调用** | 执行函数       | `add(2, 3)`                    |
+| **参数**     | 传入函数的值   | `function greet(name) { ... }` |
+| **返回值**   | 函数执行的结果 | `return a + b;`                |
+| **默认参数** | 参数的默认值   | `function greet(name="朋友")`  |
+| **箭头函数** | 简洁的函数写法 | `(a, b) => a + b`              |
 
 # 7. HTML
 
