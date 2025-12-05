@@ -2,7 +2,7 @@
   一、单选题
 */
 
-// 1. 以下关于三元运算符的描述，正确的是：    （ C ）
+// 1. 以下关于三元运算符的描述，正确的是：    （ c ）
 // A.三元运算符可以替代所有的if - else语句
 // B.三元运算符的语法是：条件 ? 为假语句 : 为真语句
 // C.三元运算符必须返回一个值
@@ -10,7 +10,7 @@
 
 /* ------------------------------ 题目分割线-------------------------------- */
 
-// 2. 以下switch语句的输出结果是：    （ C ）
+// 2. 以下switch语句的输出结果是：    （ c ）
 // <-- ↓↓↓↓↓ 代码开始 ↓↓↓↓↓ -->
 var num = 2;
 switch (num) {
@@ -27,7 +27,7 @@ switch (num) {
 
 /* ------------------------------ 题目分割线-------------------------------- */
 
-// 3. 以下for循环的执行次数是：    （ A ）
+// 3. 以下for循环的执行次数是：    （ a ）
 // <-- ↓↓↓↓↓ 代码开始 ↓↓↓↓↓ -->
 for (var i = 1; i <= 5; i += 2) {
   console.log(i);
@@ -40,12 +40,14 @@ for (var i = 1; i <= 5; i += 2) {
 
 /* ------------------------------ 题目分割线-------------------------------- */
 
-// 4. 以下代码的输出结果是：   （ B ）
+// 4. 以下代码的输出结果是：   （ A ）
 // <-- ↓↓↓↓↓ 代码开始 ↓↓↓↓↓ -->
 var x = 5;
 while (x > 0) {
-  if (x === 3) break;
-  console.log(x);
+  if (x === 3) {
+    break;
+  };
+  console.log(x); // 5 4
   x--;
 }
 // <-- ↑↑↑↑↑ 代码结束 ↑↑↑↑↑ -->
@@ -56,7 +58,7 @@ while (x > 0) {
 
 /* ------------------------------ 题目分割线-------------------------------- */
 
-// 5. 关于break和continue的区别，正确的是：    （ C ）
+// 5. 关于break和continue的区别，正确的是：    （ c ）
 // A.break用于跳过当前迭代，continue用于终止循环
 // B.在switch语句中可以使用continue
 // C.break会完全退出循环，continue会进入下一次迭代
@@ -64,7 +66,7 @@ while (x > 0) {
 
 /* ------------------------------ 题目分割线-------------------------------- */
 
-// 6. 以下do - while循环的输出结果是：   （ A ）
+// 6. 以下do - while循环的输出结果是：   （ a ）
 // <-- ↓↓↓↓↓ 代码开始 ↓↓↓↓↓ -->
 var i = 5;
 do {
@@ -86,19 +88,19 @@ do {
 二、代码分析题
 */
 
-// 1. 分析以下代码的输出结果（提示：提可以添加空号示自己优先级。先看小的那一部分，再往大的块看）：
+// 1. 分析以下代码的输出结果（提示：可以添加空号提示自己优先级。先看小的那一部分，再往大的块看）：
 var x = 5;
 var y = 3;
 var z = x > 3 ? y < 2 ? "苹果" : "香蕉" : x === 5 ? "橙子" : "葡萄";
 console.log(z);
-// ---> 结果是：__"橙子" : "葡萄"_____
+// ---> 结果是：_"橙子"："葡萄"______
 
 /* ------------------------------ 题目分割线-------------------------------- */
 
 // 2. 分析以下循环代码的输出结果：
 for (var i = 1; i <= 6; i++) {
   if (i % 3 === 0) {
-    continue 
+    continue
   };
   if (i === 5) {
     break
@@ -125,9 +127,9 @@ for (var i = 1; i <= 3; i++) {
 // ---> 结果是：
 // i = __1_____
 // j = __1_____
-// i = _______
-// j = _______
-// i = _______
+// i = __2_____
+// j = __2_____
+// i = __3_____
 // j = _______
 // i = _______
 // j = _______
@@ -149,22 +151,21 @@ for (var i = 1; i <= 3; i++) {
 // 3公里以内：13元
 // 超过3公里：每公里2.3元
 // 编写程序根据里程计算车费。
- var kilo ;
- if (kilo <= 3 && kilo >0) {
-  console.log("13")
- } else (kilo > 3) 
-  console.log("13+(kilo-3)*2.3")
+var distance = 1
+if (distance <= 3) {
+  console.log(13)
+} else if (distance > 3) {
+  console.log(13 + (distance - 3) * 2.3)
+}
+else {
+  console.log("错误！");
+}
 
 
 
-  var kilo ;
- if (kilo < 3) {
-  console.log("13")
- } else if (kilo = 3) {
-  console.log("13")
- } else (kilo > 3) 
-  console.log("13+(kilo-3)*2.3")
- 
+
+
+
 
 
 
@@ -184,50 +185,34 @@ for (var i = 1; i <= 3; i++) {
 // • 9, 10, 11：秋季
 // 其他数字输出"月份错误"
 // （提示：使用连写 case ）
-
-var month;
-var jijie;
-
+var month = 1
 switch (month) {
   case 12:
-    jijie = "冬季";
-    break;
   case 1:
-    jijie = "冬季";
-    break;
   case 2:
-    jijie = "冬季";
-    break;
+    console.log("冬季")
+    break
   case 3:
-    jijie = "春季";
-    break;
   case 4:
-    jijie = "春季";
-    break;
   case 5:
-    jijie = "春季";
-    break;
+    console.log("春季")
+    break
   case 6:
-    jijie = "夏季";
-    break;
   case 7:
-    jijie = "夏季";
-    break;
   case 8:
-    jijie = "夏季";
-    break;
+    console.log("夏季")
+    break
   case 9:
-    jijie = "秋季";
-    break;
   case 10:
-    jijie = "秋季";
-    break;
-  case11:
-    jijie = "秋季";
-    break;
+  case 11:
+    console.log("秋季")
+    break
   default:
-    jijie = "月份错误";
+    console.log("月份错误")
 }
+
+
+
 
 
 
@@ -235,14 +220,28 @@ switch (month) {
 /* ------------------------------ 题目分割线-------------------------------- */
 
 // 第3题：for循环应用
-// 题目：计算1 - 100之间所有奇数的和，并输出结果。n/2===1
-for (var jishu = 1; 1 <= jishu <=100 ; jishu += 2) {
-  console.log(jishu);
+// 题目：计算1 - 100之间所有奇数的和，并输出结果。
+var sun = 0;  // 总和
+for (var i = 1; i <= 100; i++) {
+  console.log(i)  // 会输出：1，2，3 ... 100
+  if (i % 2 === 1)  // 是奇数的情况（1，3，5）
+  {
+    sun += i  // sun = sun + i
+  }
 }
-for (var jishu; 1 <= jishu <=100 ; jishu += 2) {
-  console.log(jishu);
+console.log(sun); // 奇数总和
+
+
+
+var sun = 0;  // 总和
+for (var i = 1; i <= 100; i++) {
+  console.log(i)  // 会输出：1，2，3 ... 100
+  if (i % 2 === 0) {
+    continue;
+  }
+  sun += i  // sun = sun + i
 }
-console.log(jishu);
+console.log(sun); // 奇数总和
 
 
 
@@ -253,8 +252,13 @@ console.log(jishu);
 // 第4题：while循环应用
 // 题目：【使用while循环计算，不要使用 for 循环】：从1开始累加数字，直到累加和大于100为止
 // 输出累加的数字个数和最终的和
-var jia = 1;
-while (jia)
+
+var sun = 0;  // 总和
+var number = 1;
+while (number <= 100) {
+  sun += number
+  number++
+}
 
 
 
@@ -273,12 +277,19 @@ while (jia)
 // 1×3 = 3  2×3 = 6  3×3 = 9
 // ...
 
+for (var i = 1; i <= 9; i++) {
+  var line = ""
+  for (var j = 1; j <= i; j++) {
+    line += j + "x" + i + "=" + (i * j) + "\t"
+    line += `${j} x ${i} = ${i * j} \t`
+  }
+  console.log(line);
+}
+
 
 
 
 /* ===================================== 题目分割线 ======================================= */
-
-
 
 
 /*
@@ -291,3 +302,33 @@ while (jia)
 // • 用尽机会或猜对后显示游戏结果
 // 【 补充提示：生成 1-100 的数字代码：var randomNum = Math.floor(Math.random() * 100) + 1 】
 // 假设用户猜的数字的这个变量是 guess
+
+var randomNum = Math.floor(Math.random() * 100) + 1 // 生成一个 1-100 的整数
+var chances = 7 // 用户猜测次数
+var guess = 0;  // 假设用户猜测的数字是这个
+
+// 通过循环控制游戏流程
+for (var i = 0; i <= chances; i++) {
+  console.log(`这是第 ${i} 猜测。`);
+  // 验证用户输入的合法性
+  if (isNaN(guess) || guess <= 0 || guess > 100) {
+    console.log("输入的不正确，请重新输入。");
+    i--
+    continue
+  }
+  // 用户正常输入的情况
+  // 猜对了
+  if (guess == randomNum) {
+    console.log(`恭喜你，猜对了！数字是：${randomNum}`);
+    break;
+  }
+  // 猜测大了
+  else if (guess > randomNum) {
+    console.log(`猜测大了`);
+  }
+  // 猜测小了
+  else {
+    console.log(`猜测小了`);
+  }
+  console.log(`你还剩 ${chances - i} 次数`);
+}

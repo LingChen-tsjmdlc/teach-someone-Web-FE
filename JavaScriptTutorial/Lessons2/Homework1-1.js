@@ -40,12 +40,14 @@ for (var i = 1; i <= 5; i += 2) {
 
 /* ------------------------------ 题目分割线-------------------------------- */
 
-// 4. 以下代码的输出结果是：   （ b ）
+// 4. 以下代码的输出结果是：   （ A ）
 // <-- ↓↓↓↓↓ 代码开始 ↓↓↓↓↓ -->
 var x = 5;
 while (x > 0) {
-  if (x === 3) break;
-  console.log(x);
+  if (x === 3) {
+    break;
+  };
+  console.log(x); // 5 4
   x--;
 }
 // <-- ↑↑↑↑↑ 代码结束 ↑↑↑↑↑ -->
@@ -150,10 +152,13 @@ for (var i = 1; i <= 3; i++) {
 // 超过3公里：每公里2.3元
 // 编写程序根据里程计算车费。
 var distance = 1
-if (distance <=3  ）  {
-  console.log ("13")
-} else if (distance >3 ) {
-  console.log (13 + (distance -3)*2.3 )
+if (distance <= 3) {
+  console.log(13)
+} else if (distance > 3) {
+  console.log(13 + (distance - 3) * 2.3)
+}
+else {
+  console.log("错误！");
 }
 
 
@@ -181,29 +186,29 @@ if (distance <=3  ）  {
 // 其他数字输出"月份错误"
 // （提示：使用连写 case ）
 var month = 1
-switch(month_){
+switch (month) {
   case 12:
   case 1:
   case 2:
     console.log("冬季")
-    break 
-    case 3:
-    case 4:
-    case 5:
-      console.log("春季")
-      break
-      case 6:
-      case 7:
-      case 8:
-         console.log("夏季")
-          break 
-          case 9:
-          case 10:
-          case 11:
-           console.log("秋季")
-            break
-            default:
-            console.log("月份错误")
+    break
+  case 3:
+  case 4:
+  case 5:
+    console.log("春季")
+    break
+  case 6:
+  case 7:
+  case 8:
+    console.log("夏季")
+    break
+  case 9:
+  case 10:
+  case 11:
+    console.log("秋季")
+    break
+  default:
+    console.log("月份错误")
 }
 
 
@@ -216,13 +221,27 @@ switch(month_){
 
 // 第3题：for循环应用
 // 题目：计算1 - 100之间所有奇数的和，并输出结果。
-for (var i =1; i <=100; i++){
-  console.log(i)
-  if (i % 2 === 1 ) 
-    console.log(i)
+var sun = 0;  // 总和
+for (var i = 1; i <= 100; i++) {
+  console.log(i)  // 会输出：1，2，3 ... 100
+  if (i % 2 === 1)  // 是奇数的情况（1，3，5）
+  {
+    sun += i  // sun = sun + i
+  }
 }
+console.log(sun); // 奇数总和
 
 
+
+var sun = 0;  // 总和
+for (var i = 1; i <= 100; i++) {
+  console.log(i)  // 会输出：1，2，3 ... 100
+  if (i % 2 === 0) {
+    continue;
+  }
+  sun += i  // sun = sun + i
+}
+console.log(sun); // 奇数总和
 
 
 
@@ -234,6 +253,12 @@ for (var i =1; i <=100; i++){
 // 题目：【使用while循环计算，不要使用 for 循环】：从1开始累加数字，直到累加和大于100为止
 // 输出累加的数字个数和最终的和
 
+var sun = 0;  // 总和
+var number = 1;
+while (number <= 100) {
+  sun += number
+  number++
+}
 
 
 
@@ -252,12 +277,19 @@ for (var i =1; i <=100; i++){
 // 1×3 = 3  2×3 = 6  3×3 = 9
 // ...
 
+for (var i = 1; i <= 9; i++) {
+  var line = ""
+  for (var j = 1; j <= i; j++) {
+    line += j + "x" + i + "=" + (i * j) + "\t"
+    line += `${j} x ${i} = ${i * j} \t`
+  }
+  console.log(line);
+}
+
 
 
 
 /* ===================================== 题目分割线 ======================================= */
-
-
 
 
 /*
@@ -270,3 +302,33 @@ for (var i =1; i <=100; i++){
 // • 用尽机会或猜对后显示游戏结果
 // 【 补充提示：生成 1-100 的数字代码：var randomNum = Math.floor(Math.random() * 100) + 1 】
 // 假设用户猜的数字的这个变量是 guess
+
+var randomNum = Math.floor(Math.random() * 100) + 1 // 生成一个 1-100 的整数
+var chances = 7 // 用户猜测次数
+var guess = 0;  // 假设用户猜测的数字是这个
+
+// 通过循环控制游戏流程
+for (var i = 0; i <= chances; i++) {
+  console.log(`这是第 ${i} 猜测。`);
+  // 验证用户输入的合法性
+  if (isNaN(guess) || guess <= 0 || guess > 100) {
+    console.log("输入的不正确，请重新输入。");
+    i--
+    continue
+  }
+  // 用户正常输入的情况
+  // 猜对了
+  if (guess == randomNum) {
+    console.log(`恭喜你，猜对了！数字是：${randomNum}`);
+    break;
+  }
+  // 猜测大了
+  else if (guess > randomNum) {
+    console.log(`猜测大了`);
+  }
+  // 猜测小了
+  else {
+    console.log(`猜测小了`);
+  }
+  console.log(`你还剩 ${chances - i} 次数`);
+}
