@@ -190,3 +190,33 @@
   console.log(1 + 2); // 3
   console.log(1 + true); // 2
   ```
+- 代码示例:
+
+```js
+var a = 1;
+console.log(`这个a的值是：${a}.`);
+// 这个a的值是：1.
+
+var a = 50;
+console.log(`这个a的值是：${a}.`);
+// 这个a的值是：50.
+
+var a = true;
+console.log(`这个a的值是：${a}.`);
+// 这个a的值是：true.
+
+var a = true;
+console.log(`这个a的值是：${a}.`);
+console.log("这个a的值是：" + a);
+// 这个a的值是：true.
+// 这个a的值是：true
+
+var a = 1;
+console.log(1 + "2");
+console.log(a + "2");
+console.log(`${a}2`);
+
+// 12
+// 12
+// 12
+```

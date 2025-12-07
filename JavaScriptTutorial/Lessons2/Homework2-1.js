@@ -4,7 +4,7 @@
   一、单选题
 */
 
-// 1. 关于switch语句，以下说法正确的是：    （ c ）
+// 1. 关于switch语句，以下说法正确的是：    （ d ）
 // A.switch 语句的条件可以是任意数据类型
 // B.case 后面的值必须是常量
 // C.每个 case 后面必须跟 break 语句
@@ -120,7 +120,8 @@ for (var i = 1; i <= 5; i++) {
 
 
 /* ------------------------------ 题目分割线-------------------------------- */
-
+// i   1  2  3  4
+// j   1  2  3  1  1  2  3
 
 // 3. 分析以下嵌套循环的输出结果：
 for (var i = 1; i <= 3; i++) {
@@ -134,8 +135,8 @@ for (var i = 1; i <= 3; i++) {
 // 结果是：
 // i=__1___, j=__1___
 // i=__1___, j=__2___
-// i=_____, j=_____
-// i=_____, j=_____
+// i=__3___, j=__1___
+// i=__3___, j=__2___
 
 
 
@@ -159,17 +160,17 @@ for (var i = 1; i <= 3; i++) {
 // 你的代码如下：
 var weight;  // 现在的重量
 var totalPrice = 0;// 总价
-var weight;  // 现在的重量
-var totalPrice = 0;// 总价
-if(weight<=1){
-  console.log(10)
+if (weight <= 1) {
+  totalPrice = 10;
 }
-else if(weight>1 &&  weight<=3){
-  console.log(10+(weight-1)*2)
+else if (weight > 1 && weight <= 3) {
+  totalPrice = 10 + (weight - 1) * 2
 }
-else if(weight>3){
-  console.log(20+(weight-3)*1.5)
+else if (weight > 3) {
+  totalPrice = 20 + (weight - 3) * 1.5
 }
+console.log(`总价：${totalPrice}`);
+
 
 
 
@@ -191,30 +192,31 @@ else if(weight>3){
 // 其他数字输出"输入错误"
 // 你的代码如下：
 var day = 1
-switch(day)
+switch (day) {
   case 1:
     console.log("星期一")
     break
-    case 2:
-      console.log("星期二")
-      break
-      case 3:
-        console.log("星期三")
-        break
-        case 4:
-          console.log("星期四")
-          break
-          case 5:
-            console.log("星期五")
-            break
-            case 6:
-              console.log("星期六")
-              break
-              case 7:
-                console.log("星期日")
-                break
-                default:
-                  console.log("输入错误")
+  case 2:
+    console.log("星期二")
+    break
+  case 3:
+    console.log("星期三")
+    break
+  case 4:
+    console.log("星期四")
+    break
+  case 5:
+    console.log("星期五")
+    break
+  case 6:
+    console.log("星期六")
+    break
+  case 7:
+    console.log("星期日")
+    break
+  default:
+    console.log("输入错误")
+}
 
 
 
@@ -239,12 +241,12 @@ switch(day)
 // 第3题：for循环应用
 // 题目：计算1 - 50之间所有能被3整除的数的和，并输出结果。
 // 你的代码如下：
-var sun=0
-for(var i=1;0<i<=50;i++){
+var sun = 0
+for (var i = 1; 0 < i <= 50; i++) {
   console.log(i)
-   if(i%3===0){
-    sun+=i
-   }
+  if (i % 3 === 0) {
+    sun += i
+  }
 }
 console.log(sun);
 
@@ -269,14 +271,14 @@ console.log(sun);
 // 第4题：while循环应用
 // 题目：使用while循环计算1 - 20之间所有偶数的乘积。
 // 你的代码如下：
-var i = 0;
-while (i < 5) {
-  i++;
-  console.log(i);{
-    if(i%2===0){
-      sun*=i
-    }
-  } //
+var sun = 1
+var i = 1
+
+while (i <= 20) {
+  if (i % 2 === 0) {  // 偶数的情况
+    sun *= i
+  }
+  i++
 }
 
 
@@ -308,8 +310,6 @@ while (i < 5) {
 var num1 = 10;  // 假设用户输入的第一个数字
 var num2 = 2;   // 假设用户输入的第二个数字
 var operator = "*"; // 假设用户输入的符号
-
-
 
 
 

@@ -570,6 +570,12 @@ for (var i = 0; i < fruits.length; i++) {
 ### 2. forEach 方法(常用)
 
 ```JS
+fruits = ["Apple","Lemon", "Kiwi" , "Mango", "Pear"]
+fruits.forEach( (item, index, array) => {
+  console.log(item);
+})
+
+
 fruits.forEach((item, index, array) => {
   console.log(item, index, array);
 });
@@ -583,7 +589,7 @@ fruits.forEach((item, index, array) => {
 | 2        | index  | 当前元素的索引（0 开始） | 可选                   |
 | 3        | array  | 正在遍历的数组本身       | 可选                   |
 
-### 3. map 方法
+### 3. map 方法 (映射)
 
 ```js
 var fruits = ["apple", "banana", "orange"];
@@ -649,7 +655,7 @@ var evenNumbers = numbers.filter((item, index, array) => {
 console.log(evenNumbers); // [2, 4, 6]
 
 // 过滤水果名称长度大于2的
-var fruits = ["apple", "kiwi", "banana", "pear"];
+var fruits = ["apple", "aa", "banana", "pear"];
 var longFruits = fruits.filter((fruit) => {
   return fruit.length > 3;
 });
@@ -777,7 +783,7 @@ a: {"name" : "AAA", "age" : 132, "qwe": {"q": 111} }
 
 ---
 
-# 6. 函数（Function）
+# 6. 方法/函数（Function）
 
 ## 6.1 函数的概念
 
@@ -864,6 +870,14 @@ var result = add(5, 3); // 调用函数并把返回值保存
 console.log(result); // 输出：8
 
 // 4. 直接在表达式中使用
+// 5+10 ; 20+40 ; 50+60
+function add(a, b) {
+  return a + b; // 返回计算结果
+}
+console.log(add(5, 10));
+console.log(add(20, 40));
+console.log(add(50, 60));
+
 var total = add(10, 20) + 5; // 30 + 5
 console.log(total); // 输出：35
 ```
@@ -1138,11 +1152,26 @@ console.log(calculate()); // ✅ 正确：通过函数访问
 // 1. 写一个函数，接收两个数字，返回它们的和
 function add(a, b) {
   // 代码
+  return a + b;
+}
+
+// 1. 写一个函数，接收两个数字，返回它们的和
+function add(a, b) {
+  // 代码
+  return a + b;
 }
 
 // 2. 写一个函数，接收温度（摄氏度），返回华氏度
 // 公式：华氏度 = 摄氏度 × 9/5 + 32
 function toFahrenheit(celsius) {
+  // 代码
+  return (celsius * 9) / 5 + 32;
+}
+
+// 2. 写一个函数，接收温度（摄氏度），返回华氏度
+// 公式：华氏度 = 摄氏度 × 9/5 + 32
+function toFahrenheit(celsius) {
+  return (celsius * 9) / 5 + 32;
   // 代码
 }
 ```

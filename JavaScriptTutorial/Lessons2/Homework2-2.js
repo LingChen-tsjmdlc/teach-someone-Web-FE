@@ -209,9 +209,11 @@ switch (day) {
   case 7:
     dayname = "星期日";
     break;
-  default:
+  default:  // default 其他情况的意思
     dayname = "输入错误"
 }
+console.log(dayname);
+
 
 /* ------------------------------ 题目分割线-------------------------------- */
 
@@ -236,11 +238,14 @@ console.log(sum);
 // 第4题：while循环应用
 // 题目：使用while循环计算1 - 20之间所有偶数的乘积。
 // 你的代码如下：
-var sum = 0;
-var number = 1;
-while (20 >= number && number >= 1) {
-  if (number / 2 === 0)
-    sum *= number //sum = sum * number
+var sun = 1
+var i = 1
+
+while (i <= 20) {
+  if (i % 2 === 0) {  // 偶数的情况
+    sun *= i
+  }
+  i++
 }
 
 
@@ -273,7 +278,7 @@ var num1 = 10;  // 假设用户输入的第一个数字
 var num2 = 2;   // 假设用户输入的第二个数字
 var operator = "*"; // 假设用户输入的符号
 for (var i = 1; i <= 2; i++) {
-  console.log('这是第&[i]猜测');
+  console.log(`这是第${i}猜测`);
   if (operator != "+" || operator != "-" || operator != "*" || operator != "/") {
     console.log("无效运算符");
     i--
