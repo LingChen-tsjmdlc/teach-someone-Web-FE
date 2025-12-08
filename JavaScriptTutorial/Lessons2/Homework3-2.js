@@ -4,7 +4,7 @@
   一、单选题
 */
 
-// 1. 关于函数返回值，以下说法正确的是：    （  ）
+// 1. 关于函数返回值，以下说法正确的是：    （ B ）
 // A.函数必须要有 return 语句
 // B.函数可以有多个 return 语句，都会按顺序执行
 // C.函数中 return 后面的代码不会执行
@@ -12,7 +12,7 @@
 
 /* ------------------------------ 题目分割线 -------------------------------- */
 
-// 2. 以下代码的输出结果是：    （  ）
+// 2. 以下代码的输出结果是：    （ B ）
 // <-- ↓↓↓↓↓ 代码开始 ↓↓↓↓↓ -->
 var arr = [1, 2, 3, 4, 5];
 var result = arr.map((num) => {
@@ -31,7 +31,7 @@ console.log(result);
 
 /* ------------------------------ 题目分割线 -------------------------------- */
 
-// 3. 以下关于数组方法的说法，正确的是：    （  ）
+// 3. 以下关于数组方法的说法，正确的是：    （ B ）
 // A. forEach 方法会返回一个新的数组
 // B. filter 方法会改变原数组
 // C. map 方法会返回一个新数组
@@ -60,7 +60,7 @@ var result2 = calculate(4, 2, "multiply");
 var result3 = calculate(10, 5, "divide");
 console.log(result1, result2, result3);
 
-// 结果是： _______, _______, _______
+// 结果是： ____8___, ___8____, ___"无效操作"____
 
 
 /* ------------------------------ 题目分割线-------------------------------- */
@@ -70,12 +70,12 @@ console.log(result1, result2, result3);
 var numbers = [10, 20, 30, 40, 50];
 var filtered = numbers.filter(function (num) {
   return num > 25;
-});
+});//30, 40, 50
 var doubled = filtered.map(function (num) {
   return num * 2;
 });
 console.log(filtered.length, doubled[1]);
-
+ 
 // 结果是： _______, _______
 
 
@@ -94,8 +94,13 @@ console.log(filtered.length, doubled[1]);
 // 编写一个函数 calculateScores，它接收一个数字数组（成绩数组），返回一个新数组，只包含及格的成绩（大于等于60分）；同时输出平均分。
 
 // 你的代码：
-
-
+var Scores = [60, 80, 90, 40, 50];
+var filtered = Scores.filter((Scores) => {
+  return Scores >= 60;
+}); 
+var Scores = filtered.map(function (num) {
+  return num * 2;
+});
 
 
 

@@ -284,7 +284,12 @@ for (var i = 1; i <= 2; i++) {
     i--
     continue
   }
-  if ()
+  else if (num2 = 0) {
+    console.log("除数不能为0");
+    i--
+    continue
+  }
+  
 }
 
 
