@@ -310,7 +310,28 @@ while (i <= 20) {
 var num1 = 10;  // 假设用户输入的第一个数字
 var num2 = 2;   // 假设用户输入的第二个数字
 var operator = "*"; // 假设用户输入的符号
+switch (number){
+  case "+"
+    console.log(num1 + num2)
+    break
+    case"-"
+    console.log(num1 - num2)
+    break
+    case"*"
+    console.log(num1 * num2)
+    break
+    case"/"
+    if (num2 === 0) {
+      console.log("除数不能为0")
+    } else {
+      console.log(num1 / num2)
+    }
+     break
+    default:
+    console.log("无效运算符")
 
+}
+ 
 
 
 
