@@ -4,7 +4,7 @@
   一、单选题
 */
 
-// 1. 关于函数返回值，以下说法正确的是：    （ B ）
+// 1. 关于函数返回值，以下说法正确的是：    （ C ）
 // A.函数必须要有 return 语句
 // B.函数可以有多个 return 语句，都会按顺序执行
 // C.函数中 return 后面的代码不会执行
@@ -31,7 +31,7 @@ console.log(result);
 
 /* ------------------------------ 题目分割线 -------------------------------- */
 
-// 3. 以下关于数组方法的说法，正确的是：    （ B ）
+// 3. 以下关于数组方法的说法，正确的是：    （ C ）
 // A. forEach 方法会返回一个新的数组
 // B. filter 方法会改变原数组
 // C. map 方法会返回一个新数组
@@ -75,7 +75,7 @@ var doubled = filtered.map(function (num) {
   return num * 2;
 });
 console.log(filtered.length, doubled[1]);
- 
+
 // 结果是： _______, _______
 
 
@@ -94,15 +94,25 @@ console.log(filtered.length, doubled[1]);
 // 编写一个函数 calculateScores，它接收一个数字数组（成绩数组），返回一个新数组，只包含及格的成绩（大于等于60分）；同时输出平均分。
 
 // 你的代码：
-var Scores = [60, 80, 90, 40, 50];
-var filtered = Scores.filter((Scores) => {
-  return Scores >= 60;
-}); 
-var Scores = filtered.map(function (num) {
-  return num * 2;
-});
+var scores = [60, 80, 90, 40, 50];
 
+function calculateScores(score) {
+  // 及格的分数就是 passScores
+  var passScores = score.filter((item) => {
+    return item >= 60;
+  })
+  console.log("及格的分数有：" + passScores);
 
+  // 总分
+  var total = 0
+  score.forEach((item) => {
+    total += item
+  });
+  console.log(total);
+}
+
+// 使用
+calculateScores(scores)
 
 
 
@@ -126,9 +136,36 @@ var Scores = filtered.map(function (num) {
 
 // 你的代码:
 
+function countNumbers(number) {
+  // 初始化计数器
+  var evenCount, oddCound, posCount, negaCount, zeroCount = 0;
+
+  number.forEach((item) => {
+    // 判断奇数偶数情况
+    if (item % 2 === 0) {
+      evenCount++
+    } else {
+      oddCound++
+    }
+
+    // 正负
+    if (item < 0) {
+      negaCount++
+    }
+    else if (item > 0) {
+      posCount++
+    }
+    else {
+      zeroCount++
+    }
+  });
+  // 输出
+  console.log(`偶数的数量：${evenCount},奇数的数量：${oddCound},正数的数量：${posCount}，负数的数量：${negaCount}，零的数量：${zeroCount}`);
+}
 
 
-
+var testNumbers = [1, -2, 3, 0, 4, -5, 6];
+countNumbers(testNumbers);
 
 
 

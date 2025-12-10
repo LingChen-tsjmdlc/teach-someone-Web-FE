@@ -71,12 +71,13 @@ var numbers = [10, 20, 30, 40, 50];
 var filtered = numbers.filter(function (num) {
   return num > 25;
 });//30,40,50
+
 var doubled = filtered.map(function (num) {
   return num * 2;
 });//60,80,100
 console.log(filtered.length, doubled[1]);
 
-// 结果是： ____2___, ___80____
+// 结果是： ____3___, ___80____
 
 
 
@@ -95,7 +96,7 @@ console.log(filtered.length, doubled[1]);
 
 // 你的代码：
 
-      
+
 
 
 
