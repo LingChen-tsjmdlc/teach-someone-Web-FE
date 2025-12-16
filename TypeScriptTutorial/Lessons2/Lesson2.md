@@ -92,7 +92,7 @@ d = false   // 报错，不能将类型“boolean”分配给“number”
 
     ```TS
     let apple = "apple";
-    console.log(apple.toUpperCase()); // APPLE, 临时用工具处理
+    console.log(apple.toUpperCase()); // "APPLE", 临时用工具处理
     ```
 
 ### (2) 包装对象
@@ -450,7 +450,7 @@ function reverseArray<T>(items: T[]): T[] {
 }
 // 使用示例
 reverseArray<number>([1, 2, 3]); // ✅ 返回 [3, 2, 1]
-// reverseArray<number>(123); //  报错
+// reverseArray<number>("123"); //  报错
 reverseArray(["a", "b"]); // ✅ 类型推断为 string[]
 ```
 

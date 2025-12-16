@@ -128,6 +128,9 @@
 //   readonly info: User;
 //   createdAt?: Date;
 // }
+
+
+
 // // ----- 第五题：TypeScript 综合应用题 -----
 // /**
 //  * 电商系统类型设计
@@ -146,22 +149,77 @@
 
 // // 请在这里实现你的代码
 
-// // 使用 interface 定义类型
-// interface Product {
-//   id: number;
-//   name: string;
-//   price: number;
-// }
+// 商品类型
+interface Product {
+  id: number,
+  name: string,
+  price: number,
+  num: number
+}
 
-// interface Cart {
-//   items: Product[];
-//   totalPrice: number;
-// }
+// 购物车
+interface Cart {
+  items: Product[],
+  totalPrice: number
+}
 
-// interface UserShop {
-//   username: string;
-//   cart: Cart;
-// }
+// 用户的购物车类型
+interface UserShop {
+  userName: string,
+  cart: Cart
+}
+
+/**
+ * 创建新用户
+ * @param username 用户名
+ * @returns 返回一个新用户对象，包含初始化的空购物车
+ */
+function createUser(userName: string): UserShop {
+  return {
+    userName,
+    cart: {
+      items: [],
+      totalPrice: 0
+    }
+  }
+}
+
+/**
+ * 添加商品到购物车
+ * @param user 用户对象
+ * @param product 要添加的商品
+ * @param quantity 商品数量，默认为1
+ */
+function addToCart(product: Product, user: UserShop, num: number) {
+  const isFindItem = user.cart.items.find((item) => item.id == product.id)  // 找到的物品
+  // 如果用户购物车已经有这个商品了（ isFindItem 为 true）
+  if (isFindItem) {
+    isFindItem.num++
+  }
+  // 如果用户购物车没有这个商品了（ isFindItem 为 true）
+  else {
+    user.cart.items.push(product) // 没有就把这个添加的产品添加到用户的购物车
+  }
+}
+
+function getCartTotal(cart: Cart): number {
+  return cart.items.reduce((total, item) => {
+    // 累加每个商品的价格×数量
+    return cart.totalPrice += (item.price * item.num)
+  }, 0)
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // 实现功能函数 - 创建用户
 // function createUser(username: string): UserShop {
