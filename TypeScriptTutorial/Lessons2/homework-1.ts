@@ -140,6 +140,7 @@ function validateForm(data: UserFormData): boolean {
   if (data.Password !== data.ConfirmPassword) {
     return false;
   }
+  return true
   // 要求：
   // 1. 检查每个字段的类型是否符合 UserFormData
   // 2. 检查每个字段的验证规则

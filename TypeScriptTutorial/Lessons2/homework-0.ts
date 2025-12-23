@@ -17,7 +17,7 @@
 
 /* ------------------------------ 题目分割线-------------------------------- */
 
-// 3. 关于元组（tuple）类型，以下说法正确的是：（ A ）
+// 3. 关于元组（tuple）类型，以下说法正确的是：（ B ）
 // A. 元组中所有元素的类型必须相同
 // B. 元组的长度是固定的，不能改变（有 ... 情况除外）
 // C. 元组可以使用数组的所有方法
@@ -32,7 +32,7 @@
 */
 
 // 1. 分析以下代码，找出错误并说明原因：
-// let userName: String = "张三"; 
+// let userName: String = "张三";
 // let userAge: number = 25;
 
 // userName = 30;  // 错误位置 ①
@@ -66,8 +66,8 @@ if (typeof dataNu === "string") {
 
 // 问题：
 // 1. 代码能正常运行吗？___能____
-// 2. messageStr 最终的值是：___dataNu____
-// 3. 如果去掉 if 判断，直接写 messageStr = data 会怎样？___messageStr = data____
+// 2. messageStr 最终的值是：___"Hello TypeScript"____
+// 3. 如果去掉 if 判断，直接写 messageStr = data 会怎样？___报错____
 
 
 /* ------------------------------ 题目分割线-------------------------------- */
@@ -91,7 +91,7 @@ if (typeof dataNu === "string") {
 // 问题分析：
 // 1. ① 处会有什么错误？__类型跟前面不同_____
 // 2. ② 处能正常执行吗？为什么？__不能，跟前面对对应的需求不符_____
-// 3. ③ 处能正常执行吗？为什么？__不能，不在范围内_____
+// 3. ③ 处能正常执行吗？为什么？___ 参数类型错误 _____
 
 
 /* ===================================== 题目分割线 ======================================= */
@@ -118,15 +118,14 @@ if (typeof dataNu === "string") {
 interface UserFormData {
   name: string;
   email: string;
-  age?:number;
-  password:string;
-  depassword:string;  // 你的定义
+  age?: number;
+  password: string;
+  depassword: string;  // 你的定义
 }
 
 
 // 2. 实现验证函数（data 是用户输入的数据）
 function validateFormFunc(data: any): boolean {
-  
   if (typeof data.Username !== "string" || data.Username.length < 3 || data.Username.length > 20) {
     return false;
   }
@@ -141,7 +140,11 @@ function validateFormFunc(data: any): boolean {
   }
   if (data.Password !== data.ConfirmPassword) {
     return false;
- }// 你的实现
+  }
+  else {
+    return true
+  }
+  // 你的实现
   // 要求：
   // 1. 检查每个字段的类型是否符合 UserFormData
   // 2. 检查每个字段的验证规则
