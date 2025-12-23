@@ -1,7 +1,7 @@
 /*
 一、单选题
 */
-// 1. 关于 TypeScript 类型，以下说法正确的是：（  ）
+// 1. 关于 TypeScript 类型，以下说法正确的是：（ c ）
 // A.any 类型是类型安全的
 // B.将变量声明为 any 后，TypeScript 会进行严格的类型检查
 // C.any 类型的值可以赋值给任何其他类型的变量
@@ -9,7 +9,7 @@
 
 /* ------------------------------ 题目分割线-------------------------------- */
 
-// 2. 关于 any 和 unknown 类型，以下说法正确的是：（  ）
+// 2. 关于 any 和 unknown 类型，以下说法正确的是：（ d ）
 // A. any 类型是类型安全的，unknown 类型是不安全的
 // B. 任何类型都可以赋值给 any，任何类型也都可以赋值给 unknown
 // C. unknown 类型的值可以直接赋值给其他类型的变量
@@ -17,7 +17,7 @@
 
 /* ------------------------------ 题目分割线-------------------------------- */
 
-// 3. 关于元组（tuple）类型，以下说法正确的是：（  ）
+// 3. 关于元组（tuple）类型，以下说法正确的是：（ b ）
 // A. 元组中所有元素的类型必须相同
 // B. 元组的长度是固定的，不能改变（有 ... 情况除外）
 // C. 元组可以使用数组的所有方法
@@ -46,9 +46,9 @@
 // console.log(greet(userAge));  // 错误位置  ③
 
 // 错误原因：
-// 1. ①: _________________________________
-// 2. ②: _________________________________
-// 3. ③: _________________________________
+// 1. ①: 结果应为string而不是number__________________________
+// 2. ②: 结果应为number而不是string__________________________
+// 3. ③: 结果应为string而不是number__________________________
 
 
 /* ------------------------------ 题目分割线-------------------------------- */
@@ -65,9 +65,9 @@ if (typeof data === "string") {
 }
 
 // 问题：
-// 1. 代码能正常运行吗？_______
-// 2. message 最终的值是：_______
-// 3. 如果去掉 if 判断，直接写 message = data 会怎样？_______
+// 1. 代码能正常运行吗？_能______
+// 2. message 最终的值是：_"Hello TypeScript"______
+// 3. 如果去掉 if 判断，直接写 message = data 会怎样？__会报错_____
 
 
 /* ------------------------------ 题目分割线-------------------------------- */
@@ -89,9 +89,9 @@ if (typeof data === "string") {
 
 
 // 问题分析：
-// 1. ① 处会有什么错误？_______
-// 2. ② 处能正常执行吗？为什么？_______
-// 3. ③ 处能正常执行吗？为什么？_______
+// 1. ① 处会有什么错误？___结果不是number类型____
+// 2. ② 处能正常执行吗？为什么？__不能，因为 student 是 any 类型，不能直接赋值给 number 类型的变量 _____
+// 3. ③ 处能正常执行吗？为什么？_不能，结果应为string类型______
 
 
 /* ===================================== 题目分割线 ======================================= */
@@ -116,12 +116,30 @@ if (typeof data === "string") {
 
 // 1. 定义表单数据类型
 interface UserFormData {
-  // 你的定义
+  Username: string;
+  Email: string;
+  Age?: number;
+  Password: string;
+  ConfirmPassword: string;// 你的定义
 };
 
 // 2. 实现验证函数（data 是用户输入的数据）
 function validateForm(data: UserFormData): boolean {
-  // 你的实现
+  if (typeof data.Username !== "string" || data.Username.length < 3 || data.Username.length > 20) {
+    return false;
+  }
+  if (typeof data.Email !== "string" || !data.Email.endsWith("@qq.com")) {
+    return false;
+  }
+  if (typeof data.Age !== "number" || data.Age < 3 || data.Age > 120) {
+    return false;
+  }
+  if (typeof data.Password !== "string" || data.Password.length < 6) {
+    return false;
+  }
+  if (data.Password !== data.ConfirmPassword) {
+    return false;
+  }
   // 要求：
   // 1. 检查每个字段的类型是否符合 UserFormData
   // 2. 检查每个字段的验证规则
