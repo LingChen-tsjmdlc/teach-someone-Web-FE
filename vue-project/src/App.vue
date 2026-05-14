@@ -2,14 +2,14 @@
 
 <template>
   <p>竖向</p>
-  <div class="flex flex-col">
-    <div class="bg-yellow-200 size-10"></div>
+  <div class="flex flex-col space-y-4">
+    <div class="bg-yellow-200 size-10 mt-10"></div>
     <div class="bg-blue-200 h-20 w-10"></div>
     <div class="bg-green-200 w-10 h-30"></div>
   </div>
   <br />
   <p>横向</p>
-  <div class="flex">
+  <div class="flex space-x-4">
     <div class="bg-yellow-200 size-10"></div>
     <div class="bg-blue-200 h-20 w-10"></div>
     <div class="bg-green-200 w-10 h-30"></div>
@@ -20,20 +20,33 @@
     <div class="w-70 h-10 bg-blue-500 text-center">01</div>
   </div>
 
-  <div class="text-4xl text-center bg-gray-300 text-blue-400 w-full h-100" font-sans>个人简历</div>
-
+  <div
+    class="text-4xl text-center bg-gray-200 text-blue-400 h-100 mt-3 mx-[10%] pt-3 rounded-2xl shadow-2xl shadow-blue-400/40 inset-shadow-sm/15"
+  >
+    个人简历
+    <div
+      class="text-2xl text-lef text-blue-300 mt-2 bg-gray-300 mx-[20%] rounded-2xl h-9 inset-shadow-sm/20"
+    >
+      <p>个人信息</p>
+    </div>
+    <div class="text-xl text-left text-gray-600 px-[5%]">
+      <p>姓名：刘梓瑞</p>
+      <p>电话：15997576601</p>
+      <p>邮箱：2831029729@qq.com</p>
+      <p>出生年月：2005.05.04</p>
+      <div class="text-center text-2xl text-blue-300">教育经历</div>
+      <p>学校：本科湖北民族大学 本科</p>
+      <b>2023.09-2027.06</b>
+      <p>专业：视觉传达设计</p>
+    </div>
+  </div>
+  <br />
   <div class="text-3xl text-center text-gray-300 bg-gray-200">个人信息</div>
-  <p>姓名：刘梓瑞</p>
-  <p>电话：15997576601</p>
-  <p>邮箱：2831029729@qq.com</p>
-  <p>出生年月：2005.05.04</p>
 
   <br />
   <hr />
 
   <legend><h2>教育经历</h2></legend>
-  <p>学校：本科湖北民族大学 本科 <b>2023.09-2027.06</b></p>
-  <p>专业：视觉传达设计</p>
 
   <br />
   <hr />
