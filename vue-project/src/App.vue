@@ -1,6 +1,22 @@
 <script setup lang="ts"></script>
 
 <template>
+  <div class="grid place-items-center w-24 h-24 bg-purple-500 rounded-xl text-white">01</div>
+  <p>网格</p>
+  <div class="grid grid-cols-2 gap-4 h-80 w-100 place-content-start">
+    <div class="bg-fuchsia-600 size-20 rounded-2xl grid place-items-center">01</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl">02</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl">03</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl">04</div>
+  </div>
+
+  <div class="flex place-content-center">
+    <div class="bg-fuchsia-600 size-20 rounded-2xl shrink">01</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl flex-none">02</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl">03</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl">04</div>
+  </div>
+
   <p>竖向</p>
   <div class="flex flex-col space-y-4">
     <div class="bg-yellow-200 size-10 mt-10"></div>
