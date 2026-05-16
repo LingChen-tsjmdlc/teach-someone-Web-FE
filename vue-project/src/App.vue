@@ -1,18 +1,52 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="grid place-items-center w-24 h-24 bg-purple-500 rounded-xl text-white">01</div>
+  <div class="grid grid-cols-2 gap-10 w-max p-10 mx-auto"></div>
+  <div
+    class="flex items-center justify-center w-24 h-24 rounded-xl text-white font-bold text-xl bg-gradient-to-r from-purple-500 to-pink-500"
+  >
+    01
+  </div>
+  <div class="grid place-items-center w-24 h-24 bg-purple-500 rounded-xl text-white mx-auto">
+    01
+  </div>
   <p>网格</p>
-  <div class="grid grid-cols-2 gap-4 h-80 w-100 place-content-start">
-    <div class="bg-fuchsia-600 size-20 rounded-2xl grid place-items-center">01</div>
-    <div class="bg-fuchsia-600 size-20 rounded-2xl">02</div>
-    <div class="bg-fuchsia-600 size-20 rounded-2xl">03</div>
-    <div class="bg-fuchsia-600 size-20 rounded-2xl">04</div>
+  <div class="grid grid-cols-3 grid-flow-row gap-4 place-content-center">
+    <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">01</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">02</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">03</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">04</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">05</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">06</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">07</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">08</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">09</div>
   </div>
 
-  <div class="flex place-content-center">
-    <div class="bg-fuchsia-600 size-20 rounded-2xl shrink">01</div>
-    <div class="bg-fuchsia-600 size-20 rounded-2xl flex-none">02</div>
+  <div class="grid grid-flow-col grid-rows-3 gap-4">
+    <div class="bg-blue-200 rounded-xl">01</div>
+    <div class="bg-blue-200 rounded-xl">02</div>
+    <div class="bg-blue-200 rounded-xl">03</div>
+    <div class="bg-blue-200 rounded-xl">04</div>
+    <div class="bg-blue-200 rounded-xl">01</div>
+    <div class="bg-blue-200 rounded-xl">02</div>
+    <div class="bg-blue-200 rounded-xl">03</div>
+    <div class="bg-blue-200 rounded-xl">04</div>
+    <div class="row-span-2 grid grid-rows-subgrid gap-4"></div>
+    <div class="bg-blue-200 rounded-xl row start-2">99</div>
+  </div>
+
+  <div
+    class="grid grid-cols-2 gap-4 h-80 w-100 place-content-center bg-gradient-to-r from-blue-400 to-fuchsia-400 rounded-2xl"
+  >
+    <div class="bg-white size-20 rounded-2xl grid place-items-center">01</div>
+    <div class="bg-white size-20 rounded-2xl grid place-items-center">02</div>
+    <div class="bg-white size-20 rounded-2xl grid place-items-center">03</div>
+    <div class="bg-white size-20 rounded-2xl grid place-items-center">04</div>
+  </div>
+  <div class="flex place-content-center gap-3">
+    <div class="bg-fuchsia-600 size-20 rounded-2xl flex items-center justify-center">01</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl grid place-items-center">02</div>
     <div class="bg-fuchsia-600 size-20 rounded-2xl">03</div>
     <div class="bg-fuchsia-600 size-20 rounded-2xl">04</div>
   </div>
