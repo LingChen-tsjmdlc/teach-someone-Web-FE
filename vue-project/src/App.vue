@@ -1,18 +1,27 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="grid grid-cols-2 gap-10 w-max p-10 mx-auto"></div>
-  <div
-    class="flex items-center justify-center w-24 h-24 rounded-xl text-white font-bold text-xl bg-gradient-to-r from-purple-500 to-pink-500"
-  >
-    01
+  <div class="grid place-items-center py-5">
+    <button
+      class="size-20 rounded-2xl bg-gradient-to-r from-yellow-400 to-red-400 hover:blur-[5px] focus:outline-10 focus:outline-offset-2 focus:outline-blue-100 active:bg-blue-900"
+    ></button>
+  </div>
+  <div class="grid grid-cols-2 gap-10 w-max mx-auto"></div>
+  <div class="grid place-items-center">
+    <div
+      class="flex items-center justify-center w-24 h-24 rounded-xl text-white font-bold text-xl bg-gradient-to-r from-purple-500 to-pink-500 transition duration-300 hover:blur-[10px]"
+    >
+      01
+    </div>
   </div>
   <div class="grid place-items-center w-24 h-24 bg-purple-500 rounded-xl text-white mx-auto">
     01
   </div>
   <p>网格</p>
   <div class="grid grid-cols-3 grid-flow-row gap-4 place-content-center">
-    <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">01</div>
+    <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center blur-xl">
+      01
+    </div>
     <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">02</div>
     <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">03</div>
     <div class="bg-fuchsia-600 size-20 rounded-2xl grid text-white place-items-center">04</div>
@@ -28,18 +37,20 @@
     <div class="bg-blue-200 rounded-xl">02</div>
     <div class="bg-blue-200 rounded-xl">03</div>
     <div class="bg-blue-200 rounded-xl">04</div>
-    <div class="bg-blue-200 rounded-xl">01</div>
-    <div class="bg-blue-200 rounded-xl">02</div>
-    <div class="bg-blue-200 rounded-xl">03</div>
-    <div class="bg-blue-200 rounded-xl">04</div>
-    <div class="row-span-2 grid grid-rows-subgrid gap-4"></div>
-    <div class="bg-blue-200 rounded-xl row start-2">99</div>
+    <div class="bg-blue-200 rounded-xl">05</div>
+    <div class="bg-blue-200 rounded-xl">06</div>
+    <div class="row-span-3 grid grid-rows-subgrid gap-4 bg-amber-200">
+      <div class="row-start-2 bg-amber-600">999</div>
+      <div class="row-start-1 bg-blue-300">444</div>
+    </div>
+    <div class="bg-blue-200 rounded-xl">07</div>
+    <div class="bg-blue-200 rounded-xl">08</div>
   </div>
 
   <div
     class="grid grid-cols-2 gap-4 h-80 w-100 place-content-center bg-gradient-to-r from-blue-400 to-fuchsia-400 rounded-2xl"
   >
-    <div class="bg-white size-20 rounded-2xl grid place-items-center">01</div>
+    <div class="bg-white size-20 rounded-2xl grid place-items-center blur-[10px]">01</div>
     <div class="bg-white size-20 rounded-2xl grid place-items-center">02</div>
     <div class="bg-white size-20 rounded-2xl grid place-items-center">03</div>
     <div class="bg-white size-20 rounded-2xl grid place-items-center">04</div>
