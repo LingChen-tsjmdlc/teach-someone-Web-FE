@@ -11,7 +11,9 @@
     <div
       class="flex items-center justify-center w-24 h-24 rounded-xl text-white font-bold text-xl bg-gradient-to-r from-purple-500 to-pink-500 transition duration-300 hover:blur-[10px]"
     >
-      01
+      Afasedfasebfawesfbasdfawe
+      <div><p>冲突</p></div>
+      21321312332132
     </div>
   </div>
   <div class="grid place-items-center w-24 h-24 bg-purple-500 rounded-xl text-white mx-auto">
