@@ -8,26 +8,18 @@
 // C. TypeScript 只能在微软开发的特定环境中运行
 // D. TypeScript 去掉了 JavaScript 中不安全的特性
 
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
 
 // 2. 分析以下代码，哪一行会出现 TypeScript 编译错误？    （  C  ）
 // 第1行 ->   let userName: string;
 // 第2行 ->   userName = "Alice";
 // 第3行 ->   userName = 100;
-// A. 第1行 
-// B. 第2行 
-// C. 第3行 
+// A. 第1行
+// B. 第2行
+// C. 第3行
 // D. 不会报错
 
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
 
 // 3. 关于 `any` 类型和 `unknown` 类型的区别，文档中的说法正确的是：    （  B  ）
 // A. `any` 和 `unknown` 完全一样，可以互换使用
@@ -35,11 +27,7 @@
 // C. `any` 类型的变量不能赋值给 `string` 类型的变量
 // D. `unknown` 类型的变量可以直接调用方法，无需检查
 
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
 
 // 4. 以下关于函数返回值类型 `void` 的描述，正确的是：    （  D  ）
 // A. `void` 函数必须显式写上 return undefined;
@@ -47,11 +35,7 @@
 // C. 调用 `void` 函数的返回值可以用于 if 判断
 // D. `void` 表示函数不返回任何值，调用者不应依赖其返回值
 
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
 
 // 5. 分析以下 `tuple`（元组）的定义，哪一行赋值是错误的？    （  C  ）
 let userInfo: [string, number];
@@ -64,11 +48,7 @@ let userInfo: [string, number];
 // C. 第3行
 // D. 以上都不会报错
 
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
 
 // 6. 关于变量声明 `const`、`let`、`var` 的最佳实践，文档推荐的做法是：    （  D  ）
 // A. 全部使用 var，因为它是传统的写法
@@ -76,20 +56,9 @@ let userInfo: [string, number];
 // C. 随意混用，没有区别
 // D. 优先使用 const，需要重新赋值时用 let，永远不要使用 var
 
-
-
-
-
-
-
 /*
   ===================================== 题目分割线 =======================================
 */
-
-
-
-
-
 
 /*
   二、代码分析题（写出输出结果或报错原因）
@@ -98,15 +67,9 @@ let userInfo: [string, number];
 let fruit = "apple";
 fruit = "orange";
 console.log(fruit);
-// 结果是： ___"orange" ___ 
-
-
-
+// 结果是： ___"orange" ___
 
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
-
 
 // 2. 分析 `unknown` 类型的安全性（参考文档：unknown定义）：
 let input: unknown;
@@ -114,13 +77,7 @@ input = "123";
 // let output: string = input; // 如果取消注释这行，会报错吗？报错说的是什么？
 // 报错原因： ___ 会报错，无法将string类型的赋值给input___
 
-
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
-
 
 // 3. 分析 `void` 函数的正确调用
 function logInfo(msg: string): void {
@@ -129,13 +86,7 @@ function logInfo(msg: string): void {
 logInfo("Test");
 // 预期控制台输出： ___ "Test"___
 
-
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
-
 
 // 4. 分析数字枚举（Enum）的反向映射：
 enum StatusCode {
@@ -145,18 +96,9 @@ enum StatusCode {
 console.log(StatusCode[0]);
 // 结果是： ___Success ___
 
-
-
-
-
-
 /*
   ===================================== 题目分割线 =======================================
 */
-
-
-
-
 
 /*
   三、编程题（考察 TS 核心语法）
@@ -170,19 +112,14 @@ console.log(StatusCode[0]);
 //      4. 调用该函数，传入 10 和 20，并打印结果。
 
 // 在这里写你的代码：
-let width: number
-let height: number
+let width: number;
+let height: number;
 function calculateArea(width, height): number {
-  return width * height
+  return width * height;
 }
-calculateArea(10, 20)
-
-
+calculateArea(10, 20);
 
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
-
 
 // 第2题：Tuple（元组）的实际应用 - API 状态响应
 // 背景：在实际项目中，后端接口经常返回固定格式的数据。为了避免定义繁琐的对象，我们可以使用元组来表示 [状态码, 提示信息]。
@@ -191,24 +128,18 @@ calculateArea(10, 20)
 //      2. 编写一个函数 `checkServerStatus`，该函数的返回值类型为 `ApiResponse`。
 //      3. 当服务器正常时，返回 `[200, "OK"]`；异常时返回 `[500, "Internal Server Error"]`。
 //      4. 调用该函数并使用解构赋值获取状态码和消息，打印到控制台（例如输出是：服务报错了：状态码: 500, 提示: Internal Server Error）。
-type ApiResponse = [number, string]
+type ApiResponse = [number, string];
 function checkServerStatus(severIsOk: boolean): ApiResponse {
   if (severIsOk) {
-    return [200, "OK"]
+    return [200, "OK"];
   } else {
-    return [500, "Internal Server Error"]
+    return [500, "Internal Server Error"];
   }
 }
-let serverIdel = checkServerStatus(false)
+let serverIdel = checkServerStatus(false);
 console.log(`服务报错了：状态码: ${serverIdel[0]}, 提示: ${serverIdel[1]}`);
 
-
-
-
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
 
 // 第3题：Enum（枚举）的应用
 // 题目：定义一个订单状态枚举，并根据状态输出信息。
@@ -221,17 +152,11 @@ console.log(`服务报错了：状态码: ${serverIdel[0]}, 提示: ${serverIdel
 enum OrderStatus {
   Pending,
   Shipped,
-  Delivered
+  Delivered,
 }
-let currentStatus = OrderStatus.Pending
-console.log(currentStatus)
-console.log(OrderStatus)
-
-
-
-
-
-
+let currentStatus = OrderStatus.Pending;
+console.log(currentStatus);
+console.log(OrderStatus);
 
 /* ------------------------------ 题目分割线 -------------------------------- */
 
@@ -242,21 +167,16 @@ console.log(OrderStatus)
 //    2. 编写一个函数 `parseWeather`，接收该 `unknown` 类型的参数。
 //    3. 在函数内部，必须先进行类型检查（类型收窄）。如果它是字符串，则打印 "当前温度为：" + 该字符串；如果不是字符串，则打印 "数据格式异常，无法解析"。
 //    4. 调用该函数并传入 `weatherData`。
-let weatherData: unknown
-weatherData = "25℃"
+let weatherData: unknown;
+weatherData = "25℃";
 function parseWeather(weatherData) {
   if (typeof weatherData === "string") {
-    console.log(`当前温度为：${weatherData}`)
-  }
-  else {
-    console.log("数据格式异常，无法解析")
+    console.log(`当前温度为：${weatherData}`);
+  } else {
+    console.log("数据格式异常，无法解析");
   }
 }
-parseWeather(weatherData)
-
-
-
-
+parseWeather(weatherData);
 
 /*
   ===================================== 题目分割线 =======================================
@@ -281,42 +201,26 @@ parseWeather(weatherData)
 
 // --- 在这里写你的代码 ---
 
-const rawStudents =
-  [{ name: "张三", score: 85 },
+const rawStudents = [
+  { name: "张三", score: 85 },
   { name: "李四", score: 55 },
-  { name: "王五", score: 90 }]
-let results: { name: string, score: number, grade: string }[] = []
+  { name: "王五", score: 90 },
+];
+let results: { name: string; score: number; grade: string }[] = [];
 
-function evaluateStudents(student: { name: string, score: number }[]): { name: string, score: number, grade: string }[] {
-  results = []
+function evaluateStudents(
+  student: { name: string; score: number }[],
+): { name: string; score: number; grade: string }[] {
+  results = [];
   for (let i = 0; i < student.length; i++) {
     // 为什么要用三元使用if时，总会找不到参数和元素
-    const item = student[i]
-    const grade = item.score >= 60 ? "及格" : "不及格"
+    const item = student[i];
+    const grade = item.score >= 60 ? "及格" : "不及格";
     results.push({ name: item.name, score: item.score, grade });
   }
-  return results
+  return results;
 }
-console.log(evaluateStudents(rawStudents))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(evaluateStudents(rawStudents));
 
 /*
 二、代码分析题
@@ -342,9 +246,7 @@ console.log(evaluateStudents(rawStudents))
 // 2. ②: __应是number类型，输入的是string类型_______________________________
 // 3. ③: ___没有英文字母，不满足条件______________________________
 
-
 /* ------------------------------ 题目分割线-------------------------------- */
-
 
 // 2. 分析以下代码的输出和类型：
 let dataNu: unknown = "Hello TypeScript";
@@ -361,9 +263,7 @@ if (typeof dataNu === "string") {
 // 2. messageStr 最终的值是：____"Hello TypeScript"___
 // 3. 如果去掉 if 判断，直接写 messageStr = data 会怎样？___无法判断，无法将unknown类型的赋予给messageStr____
 
-
 /* ------------------------------ 题目分割线-------------------------------- */
-
 
 // 3. 分析以下代码中的类型问题：
 
@@ -379,15 +279,12 @@ if (typeof dataNu === "string") {
 
 // getLength(100);  // ③
 
-
 // 问题分析：
 // 1. ① 处会有什么错误？___将string类型赋予给了number类型____
 // 2. ② 处能正常执行吗？为什么？____可以，any类型的元素可以赋值给任意类型的元素___
 // 3. ③ 处能正常执行吗？为什么？___不行，实参要字符串 _____
 
-
 /* ===================================== 题目分割线 ======================================= */
-
 
 /*
 三、编程题
@@ -415,8 +312,6 @@ if (typeof dataNu === "string") {
 // 2. 检查每个字段的验证规则
 // 3. 返回错误信息（通过为 true ，没通过为 false）
 
-
-
 // function 用户名函数(名字:string):boolean{
 //   if (名字.length>=3&&名字.length<=20){
 //     return true
@@ -436,77 +331,65 @@ if (typeof dataNu === "string") {
 //   }
 // }
 interface userInfomation {
-  username: string
-  QQemail: string
-  age?: number
-  passswprd: string
-  secendpassword: string
+  username: string;
+  QQemail: string;
+  age?: number;
+  passswprd: string;
+  secendpassword: string;
 }
 function UserFormData(everuser: userInfomation): boolean[] {
   // 设置一个数组接住返回值
-  let users: boolean[] = []
-  // 用户名长度 
+  let users: boolean[] = [];
+  // 用户名长度
   if (everuser.username.length >= 3 && everuser.username.length <= 20) {
-    users.push(true)
-  }
-  else {
-    users.push(false)
+    users.push(true);
+  } else {
+    users.push(false);
   }
   // qq邮箱
   if (everuser.QQemail.endsWith("@qq.com")) {
-    users.push(true)
-  }
-  else {
-    users.push(false)
+    users.push(true);
+  } else {
+    users.push(false);
   }
   // 年龄
-  if (everuser.age === undefined || everuser.age >= 3 && everuser.age <= 120) {
-    users.push(true)
-  }
-  else {
-    users.push(false)
+  if (
+    everuser.age === undefined ||
+    (everuser.age >= 3 && everuser.age <= 120)
+  ) {
+    users.push(true);
+  } else {
+    users.push(false);
   }
   // 密码
   if (everuser.passswprd.length >= 6) {
-    users.push(true)
-  }
-  else {
-    users.push(false)
+    users.push(true);
+  } else {
+    users.push(false);
   }
   // 确认密码
   if (everuser.secendpassword === everuser.passswprd) {
-    users.push(true)
+    users.push(true);
+  } else {
+    users.push(false);
   }
-  else {
-    users.push(false)
-  }
-  return users
+  return users;
 }
 const testData: userInfomation = {
   username: "Alice",
   QQemail: "123456@qq.com",
   age: 25,
   passswprd: "mypassword",
-  secendpassword: "mypassword"
-}
+  secendpassword: "mypassword",
+};
 
-let datas = UserFormData(testData)
-let res = datas.every(i => i === true)
+let datas = UserFormData(testData);
+let res = datas.every((i) => i === true);
 if (res === true) {
-  console.log("验证通过")
+  console.log("验证通过");
+} else {
+  console.log("错误");
 }
-else {
-  console.log("错误")
-}
-
-
-
-
-
-
-
-
-
 
 /* ============================================================================ */
 /* ============================================================================ */
@@ -514,38 +397,29 @@ else {
 /* ============================================================================ */
 /* ============================================================================ */
 
-
 /*
   ==========================================
   一、单选题
   ==========================================
 */
 
-// 1. 关于 `never` 类型，以下说法正确的是：    （     ）
+// 1. 关于 `never` 类型，以下说法正确的是：    （   B  ）
 // A. `never` 类型的变量可以赋值为 null
 // B. `never` 类型通常由 TypeScript 自动推断出来，表示永远不会有值的类型
 // C. `never` 和 `void` 完全一样，可以互换使用
 // D. 可以给 `never` 类型的变量赋值为 undefined
 
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
 
-
-
-// 2. 关于 `type`（类型别名），以下用法 “错误” 的是：    （     ）
+// 2. 关于 `type`（类型别名），以下用法 “错误” 的是：    （   C  ）
 // A. type ID = number;
 // B. type User = { name: string; age: number };
 // C. type Count = 10;
 // D. type 不能用于定义对象结构，只能定义基本类型
 
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
 
-
-
-// 3. 分析以下代码，哪一行会报错？    （     ）
+// 3. 分析以下代码，哪一行会报错？    （  AB   ）
 interface Person {
   name: string;
   readonly id: number;
@@ -559,14 +433,11 @@ const p: Person = { name: "张三", id: 1 };
 // B. 第②行
 // C. 第③行
 // D. 都不会报错
-
-
+// 这个是调用的意思？应该是重新命名的意思，那就都是错的
 
 /* ------------------------------ 题目分割线 -------------------------------- */
 
-
-
-// 4. 关于 interface（接口）的继承，以下代码能正常运行吗？    （     ）
+// 4. 关于 interface（接口）的继承，以下代码能正常运行吗？    （  B   ）
 interface Animal {
   name: string;
   move(): void;
@@ -574,20 +445,23 @@ interface Animal {
 interface Dog extends Animal {
   breed: string;
 }
-const myDog: Dog = { name: "阿黄", breed: "金毛", move() { console.log("跑动"); } };
+const myDog: Dog = {
+  name: "阿黄",
+  breed: "金毛",
+  move() {
+    console.log("跑动");
+  },
+};
 console.log(myDog.name);
 // A. 报错，Dog 不能继承 Animal
 // B. 正常运行，输出 "阿黄"
 // C. 报错，myDog 缺少 move 方法
 // D. 正常运行，但输出 undefined
-
-
+// 问的ai，这个例子不完整，只有使用的结果，move时会输出跑动
 
 /* ------------------------------ 题目分割线 -------------------------------- */
 
-
-
-// 5. 关于泛型函数，以下调用会 "报错" 的是：    （     ）
+// 5. 关于泛型函数，以下调用会 "报错" 的是：    （  c   ）
 function wrapInArray<T>(value: T): T[] {
   return [value];
 }
@@ -596,13 +470,9 @@ function wrapInArray<T>(value: T): T[] {
 // C. wrapInArray<boolean>(1)
 // D. wrapInArray("world")
 
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
 
-
-
-// 6. 分析以下枚举代码，`console.log(LogLevel.Warn)` 的输出是：    （     ）
+// 6. 分析以下枚举代码，`console.log(LogLevel.Warn)` 的输出是：    （  c   ）
 enum LogLevel {
   Info = "INFO-信息",
   Warn = "WARN-警告",
@@ -614,25 +484,18 @@ console.log(LogLevel.Warn);
 // C. "WARN-警告"
 // D. undefined
 
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
 
-
-
-// 7. 以下哪种写法是**字符串枚举**的正确定义？    （     ）
+// 7. 以下哪种写法是**字符串枚举**的正确定义？    （  b   ）
 // A. enum Color { Red, Green, Blue }
 // B. enum Color { Red = "RED", Green = "GREEN", Blue = "BLUE" }
 // C. enum Color { Red = 0, Green = "green" }
 // D. enum Color { "RED", "GREEN", "BLUE" }
-
-
+// 那么ab两个有什么区别，都是数字枚举
 
 /* ------------------------------ 题目分割线 -------------------------------- */
 
-
-
-// 8. 分析以下代码，哪一行会报错？    （     ）
+// 8. 分析以下代码，哪一行会报错？    （   b  ）
 let arr: [string, number];
 // arr = ["hello", 100];     // 第①行
 // arr = [200, "world"];     // 第②行
@@ -641,8 +504,7 @@ let arr: [string, number];
 // B. 第②行
 // C. 第③行
 // D. 第②行和第③行都会报错
-
-
+// 多了会报错，少了不行但是不会报错？
 
 /*
   ==========================================
@@ -658,14 +520,10 @@ let arr: [string, number];
 // } else {
 //   console.log(value); // TS 推断此处的 value 是什么类型？
 // }
-// 问题：else 分支中，TS 推断 value 的类型是 ________ ，
-//       原因是 ________________________________________
-
-
+// 问题：else 分支中，TS 推断 value 的类型是 ________undefind ，
+//       原因是 _____________________无法被定义，或者说按照else的条件，那么在前文对value的定义失效了，现在的value是没有被定义的
 
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
 
 // 2. 分析 interface 的 readonly 和可选属性（提示：参考文档 interface 基础定义）：
 interface Config {
@@ -676,14 +534,10 @@ const config: Config = { appName: "MyApp" };
 // config.appName = "NewApp";   // ①
 // config.version = 2;          // ②
 // 问题：
-// 1. 第①行会报错吗？ ________ ，原因是 ________________________________________
-// 2. 初始化时没有写 version 属性，会报错吗？ ________ ，原因是 ____________________
-
-
+// 1. 第①行会报错吗？ ________会 ，原因是 ________________________________________const定义的值无法被更改
+// 2. 初始化时没有写 version 属性，会报错吗？ ________ 不会报错，原因是 ____________________?表示可写可不写
 
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
 
 // 3. 分析泛型与 any 的区别（提示：参考文档：泛型和any对比）：
 function safeWrap<T>(value: T): T[] {
@@ -692,20 +546,18 @@ function safeWrap<T>(value: T): T[] {
 function dangerWrap(value: any): any[] {
   return [value];
 }
-safeWrap(100).map((x) => x.toFixed(2));       // ①
-dangerWrap(100).map((x) => x.undefinedMethod()); // ②
+safeWrap(100).map((x) => x.toFixed(2)); // ①//这个函数什么意思？问的ai是高阶函数，那就是先把safeWrap(100)代入，返回[100],在带入到map（x）里面，返回[100].toFixed(2)
+dangerWrap(100).map((x) => x.undefinedMethod()); // ②//没懂这个any的。any是啥都可以，所以也可以？
+
 // 问题：
-// 1. ① 处能正常执行并得到正确提示吗？ ________
+// 1. ① 处能正常执行并得到正确提示吗？ ________能
 // 2. ② 处在编译时会报错吗？ ________ ，原因是 ________________________________________
-
-
 
 /*
   ==========================================
   三、编程题
   ==========================================
 */
-
 
 // ---- 第1题：type 别名 + 函数 ----
 // 题目：使用 type 定义一个"商品"类型，并编写函数计算商品总价。
@@ -722,12 +574,7 @@ dangerWrap(100).map((x) => x.undefinedMethod()); // ②
 
 // 在这里写你的代码：
 
-
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
 
 // ---- 第2题：interface 定义 + 接口继承 ----
 // 题目：定义"车辆"接口和继承它的"电动汽车"接口。
@@ -744,12 +591,7 @@ dangerWrap(100).map((x) => x.undefinedMethod()); // ②
 
 // 在这里写你的代码：
 
-
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
 
 // ---- 第3题：泛型函数（基础）----
 // 题目：编写一个泛型函数 getFirst，获取数组的第一个元素。
@@ -765,12 +607,7 @@ dangerWrap(100).map((x) => x.undefinedMethod()); // ②
 
 // 在这里写你的代码：
 
-
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
 
 // ---- 第4题：enum 枚举 + 函数 ----
 // 题目：定义季节枚举，并编写函数根据季节返回活动建议。
@@ -791,14 +628,7 @@ dangerWrap(100).map((x) => x.undefinedMethod()); // ②
 
 // 在这里写你的代码：
 
-
-
-
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
 
 // ---- 第5题：泛型接口（interface + 泛型）----
 // 题目：定义一个通用的 API 响应接口，并使用它。
@@ -818,12 +648,7 @@ dangerWrap(100).map((x) => x.undefinedMethod()); // ②
 
 // 在这里写你的代码：
 
-
-
-
 /* ------------------------------ 题目分割线 -------------------------------- */
-
-
 
 // ---- 第6题：tuple 元组 + 类型别名 ----
 // 题目：用元组表示学生的成绩记录，并编写查询函数。
@@ -849,9 +674,6 @@ dangerWrap(100).map((x) => x.undefinedMethod()); // ②
 //         - 调用 findScore(scores, "赵六")，打印结果。预期输出：未找到该学生
 
 // 在这里写你的代码：
-
-
-
 
 /*
   ==========================================
@@ -911,7 +733,3 @@ dangerWrap(100).map((x) => x.undefinedMethod()); // ②
 //    - 再次打印小明已借图书的数量（预期：0）
 
 // 在这里写你的代码：
-
-
-
-
