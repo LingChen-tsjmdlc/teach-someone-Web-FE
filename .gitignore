@@ -1,5 +1,6 @@
 # ===== Dependencies =====
 node_modules/
+vue-project/node_modules/
 .pnpm-store/
 .yarn/
 
