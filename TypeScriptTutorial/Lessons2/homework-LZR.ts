@@ -578,10 +578,11 @@ type Product = {
   price : number;
   count : number;
 };
+
 function calcTotal(products: Product): number {
-  return price * count;
+  return products.price * products.count;
 }
-const apple {
+const apple ={
   name : "苹果",
   price : 5.5,
   count : 3,
@@ -604,16 +605,16 @@ console.log(appleSel);
 //         预期输出：我的车是比亚迪，2025年款，电池60kWh
 
 // 在这里写你的代码：
-interface Vehicle ={
+interface Vehicle {
   brand:string;
-  year=number
+  year:number
 }
 interface ElectricCar extends Vehicle{
   battery:number
 }
-const myCar:ElectricCar{
-  brand:"比亚迪"
-  year:2025
+const myCar:ElectricCar={
+  brand:"比亚迪",
+  year:2025,
   battery:60
 }
 console.log('我的车是${myCar.brand},${myCar.year}年款，电池${myCar.battery}kWh')
