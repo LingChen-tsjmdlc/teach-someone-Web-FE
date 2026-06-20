@@ -573,7 +573,21 @@ dangerWrap(100).map((x) => x.undefinedMethod()); // ②//没懂这个any的。an
 //         预期输出：16.5
 
 // 在这里写你的代码：
-
+type Product = {
+  name : string;
+  price : number;
+  count : number;
+};
+function calcTotal(products: Product): number {
+  return price * count;
+}
+const apple {
+  name : "苹果",
+  price : 5.5,
+  count : 3,
+};
+let appleSel = calcTotal(apple);
+console.log(appleSel);
 /* ------------------------------ 题目分割线 -------------------------------- */
 
 // ---- 第2题：interface 定义 + 接口继承 ----
@@ -590,7 +604,19 @@ dangerWrap(100).map((x) => x.undefinedMethod()); // ②//没懂这个any的。an
 //         预期输出：我的车是比亚迪，2025年款，电池60kWh
 
 // 在这里写你的代码：
-
+interface Vehicle ={
+  brand:string;
+  year=number
+}
+interface ElectricCar extends Vehicle{
+  battery:number
+}
+const myCar:ElectricCar{
+  brand:"比亚迪"
+  year:2025
+  battery:60
+}
+console.log('我的车是${myCar.brand},${myCar.year}年款，电池${myCar.battery}kWh')
 /* ------------------------------ 题目分割线 -------------------------------- */
 
 // ---- 第3题：泛型函数（基础）----
