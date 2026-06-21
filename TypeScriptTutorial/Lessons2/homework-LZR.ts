@@ -574,18 +574,18 @@ dangerWrap(100).map((x) => x.undefinedMethod()); // ②//没懂这个any的。an
 
 // 在这里写你的代码：
 type Product = {
-  name : string;
-  price : number;
-  count : number;
+  name: string;
+  price: number;
+  count: number;
 };
 
 function calcTotal(products: Product): number {
   return products.price * products.count;
 }
-const apple ={
-  name : "苹果",
-  price : 5.5,
-  count : 3,
+const apple = {
+  name: "苹果",
+  price: 5.5,
+  count: 3,
 };
 let appleSel = calcTotal(apple);
 console.log(appleSel);
@@ -606,18 +606,20 @@ console.log(appleSel);
 
 // 在这里写你的代码：
 interface Vehicle {
-  brand:string;
-  year:number
+  brand: string;
+  year: number;
 }
-interface ElectricCar extends Vehicle{
-  battery:number
+interface ElectricCar extends Vehicle {
+  battery: number;
 }
-const myCar:ElectricCar={
-  brand:"比亚迪",
-  year:2025,
-  battery:60
-}
-console.log('我的车是${myCar.brand},${myCar.year}年款，电池${myCar.battery}kWh')
+const myCar: ElectricCar = {
+  brand: "比亚迪",
+  year: 2025,
+  battery: 60,
+};
+console.log(
+  "我的车是${myCar.brand},${myCar.year}年款，电池${myCar.battery}kWh",
+);
 /* ------------------------------ 题目分割线 -------------------------------- */
 
 // ---- 第3题：泛型函数（基础）----
@@ -633,7 +635,11 @@ console.log('我的车是${myCar.brand},${myCar.year}年款，电池${myCar.batt
 //         - 调用 getFirst<string>(["a", "b", "c"])，打印结果。预期输出："a"
 
 // 在这里写你的代码：
-
+function getFirst<T>(arr: T[]): T {
+  return arr[0];
+}
+console.log(getFirst<number>([10, 20, 30]));
+console.log(getFirst<number>(["a", "b", "c"]));
 /* ------------------------------ 题目分割线 -------------------------------- */
 
 // ---- 第4题：enum 枚举 + 函数 ----
@@ -655,12 +661,56 @@ console.log('我的车是${myCar.brand},${myCar.year}年款，电池${myCar.batt
 
 // 在这里写你的代码：
 
+// 一开始不理解，season.什么什么的，参数不知道具体怎么去定
+// enum Season {
+//   Spring = "春天",
+//   Summer = "夏天",
+//   Autumn = "秋天",
+//   Winter = "冬天",
+// }
+// function getActivity(Season: Season): string {
+//   let i = "";
+//   if ((i = "春天")) {
+//     ("去踏青");
+//   } else if ((i = "夏天")) {
+//     ("去游泳");
+//   } else if ((i = "秋天")) {
+//     ("去赏枫");
+//   } else if ((i = "冬天")) {
+//     ("去滑雪");
+//   }
+//   return i;
+// }
+// console.log(getActivity(Season.Summer));
+
+enum Season {
+  Spring = "春天",
+  Summer = "夏天",
+  Autumn = "秋天",
+  Winter = "冬天",
+}
+
+function getActivity(season: Season): string {
+  if (season === Season.Spring) {
+    return "去踏青";
+  } else if (season === Season.Summer) {
+    return "去游泳";
+  } else if (season === Season.Autumn) {
+    return "去赏枫";
+  } else if (season === Season.Winter) {
+    return "去滑雪";
+  } else {
+    return "无";
+  }
+}
+console.log(getActivity(Season.Summer));
+
 /* ------------------------------ 题目分割线 -------------------------------- */
 
 // ---- 第5题：泛型接口（interface + 泛型）----
 // 题目：定义一个通用的 API 响应接口，并使用它。
 // 要求：
-//      1. 定义泛型接口 ApiResponse<T>，包含三个属性：
+//      1. 定义泛型接口 ApiResponses<T>，包含三个属性：
 //         - code（number）：状态码
 //         - message（string）：提示信息
 //         - data（T）：响应数据，类型由泛型 T 决定
@@ -674,7 +724,23 @@ console.log('我的车是${myCar.brand},${myCar.year}年款，电池${myCar.batt
 //         ["苹果", "香蕉", "橙子"]
 
 // 在这里写你的代码：
-
+interface ApiResponses<T> {
+  code: number;
+  message: string;
+  data: T;
+}
+let res1: ApiResponses<string> = {
+  code: 200,
+  message: "成功",
+  data: "用户数据加载完成",
+};
+let res2: ApiResponses<string[]> = {
+  code: 200,
+  message: "成功",
+  data: ["苹果", "香蕉", "橙子"],
+};
+console.log(res1.data);
+console.log(res2.data);
 /* ------------------------------ 题目分割线 -------------------------------- */
 
 // ---- 第6题：tuple 元组 + 类型别名 ----
@@ -701,6 +767,23 @@ console.log('我的车是${myCar.brand},${myCar.year}年款，电池${myCar.batt
 //         - 调用 findScore(scores, "赵六")，打印结果。预期输出：未找到该学生
 
 // 在这里写你的代码：
+type ScoreRecord = [string, number];
+let scores: ScoreRecord[] = [
+  ["张三", 85],
+  ["李四", 92],
+  ["王五", 78],
+];
+function findScore(scores: ScoreRecord[], name: string): string {
+  for (let i = 0; i < scores.length; i++) {
+    if (scores[i][0] === name) {
+      return `${name}的分数是${scores[i][1]}`;
+    }
+  }
+  return "未找到该学生";
+  // 这里为什么不能在循环里面写else？写了之后会说这个函数没有return
+}
+console.log(findScore(scores, "李四"));
+console.log(findScore(scores, "赵六"));
 
 /*
   ==========================================
@@ -760,3 +843,30 @@ console.log('我的车是${myCar.brand},${myCar.year}年款，电池${myCar.batt
 //    - 再次打印小明已借图书的数量（预期：0）
 
 // 在这里写你的代码：
+enum BookStatus {
+  Available = "可借",
+  Borrowed = "已借出",
+  Reserved = "已预约",
+}
+interface Book {
+  id: number;
+  title: string;
+  author: string;
+  status: BookStatus;
+}
+interface Reader {
+  name: string;
+  borrowedBook: Book[];
+}
+function createReader(name: string): Reader {
+  let newReader: Reader = { name: name, borrowedBook: [] };
+  return newReader;
+}
+function borrowbook(newReader: Reader, book: Book) {
+  if (book.status !== BookStatus.Borrowed) {
+    return "该书不可借";
+  } else {
+    book;
+    Reader.borrowBook;
+  }
+}
