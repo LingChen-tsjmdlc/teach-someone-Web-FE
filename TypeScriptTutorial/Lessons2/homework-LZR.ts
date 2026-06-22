@@ -419,7 +419,7 @@ if (res === true) {
 
 /* ------------------------------ 题目分割线 -------------------------------- */
 
-// 3. 分析以下代码，哪一行会报错？    （  B  ）
+// 3. 分析以下代码，哪一行会报错？    （  AB   ）
 interface Person {
   name: string;
   readonly id: number;
@@ -520,7 +520,7 @@ let arr: [string, number];
 // } else {
 //   console.log(value); // TS 推断此处的 value 是什么类型？
 // }
-// 问题：else 分支中，TS 推断 value 的类型是 ________never ，
+// 问题：else 分支中，TS 推断 value 的类型是 ________undefind ，
 //       原因是 _____________________无法被定义，或者说按照else的条件，那么在前文对value的定义失效了，现在的value是没有被定义的
 
 /* ------------------------------ 题目分割线 -------------------------------- */
@@ -577,18 +577,11 @@ type Product = {
   name: string;
   price: number;
   count: number;
-  name: string;
-  price: number;
-  count: number;
 };
 
 function calcTotal(products: Product): number {
   return products.price * products.count;
 }
-const apple = {
-  name: "苹果",
-  price: 5.5,
-  count: 3,
 const apple = {
   name: "苹果",
   price: 5.5,
@@ -622,9 +615,11 @@ interface ElectricCar extends Vehicle {
 const myCar: ElectricCar = {
   brand: "比亚迪",
   year: 2025,
-  battery: 60
-}
-console.log(`我的车是${myCar.brand},${myCar.year}年款，电池${myCar.battery}kWh`)
+  battery: 60,
+};
+console.log(
+  "我的车是${myCar.brand},${myCar.year}年款，电池${myCar.battery}kWh",
+);
 /* ------------------------------ 题目分割线 -------------------------------- */
 
 // ---- 第3题：泛型函数（基础）----
@@ -644,7 +639,7 @@ function getFirst<T>(arr: T[]): T {
   return arr[0];
 }
 console.log(getFirst<number>([10, 20, 30]));
-console.log(getFirst<number>(["a", "b", "c"]));
+console.log(getFirst<string>(["a", "b", "c"]));
 /* ------------------------------ 题目分割线 -------------------------------- */
 
 // ---- 第4题：enum 枚举 + 函数 ----

@@ -561,9 +561,11 @@ var position = fruits.indexOf("Banana"); // 返回索引（所以说这里返回
 ```js
 // 切片
 var citrus = fruits.slice(1, 3); // ["Banana", "Orange"]
-// 拼接
+// 拼接/替换
 var removedItems = fruits.splice(1, 2, "Lemon", "Kiwi");
 // ["Apple","Lemon", "Kiwi" , "Mango", "Pear"]
+fruits.splice(1, 2); //这个的意思是从索引 X 开始删除 Y 个（包括自己）
+// ["Apple", "Mango", "Pear"]
 ```
 
 ## 4.4 数组遍历

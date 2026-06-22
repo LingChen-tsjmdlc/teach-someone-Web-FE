@@ -55,8 +55,8 @@
 
 
 // 2. 分析以下代码的输出和类型：
-let dataNu: unknown = "Hello TypeScript";
-let messageStr: string;
+// let dataNu: unknown = "Hello TypeScript";
+// let messageStr: string;
 
 if (typeof dataNu === "string") {
   messageStr = dataNu;
