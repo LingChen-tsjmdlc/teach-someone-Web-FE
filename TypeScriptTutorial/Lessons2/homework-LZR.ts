@@ -419,7 +419,7 @@ if (res === true) {
 
 /* ------------------------------ 题目分割线 -------------------------------- */
 
-// 3. 分析以下代码，哪一行会报错？    （  AB   ）
+// 3. 分析以下代码，哪一行会报错？    （  B  ）
 interface Person {
   name: string;
   readonly id: number;
@@ -520,7 +520,7 @@ let arr: [string, number];
 // } else {
 //   console.log(value); // TS 推断此处的 value 是什么类型？
 // }
-// 问题：else 分支中，TS 推断 value 的类型是 ________undefind ，
+// 问题：else 分支中，TS 推断 value 的类型是 ________never ，
 //       原因是 _____________________无法被定义，或者说按照else的条件，那么在前文对value的定义失效了，现在的value是没有被定义的
 
 /* ------------------------------ 题目分割线 -------------------------------- */
@@ -577,11 +577,18 @@ type Product = {
   name: string;
   price: number;
   count: number;
+  name: string;
+  price: number;
+  count: number;
 };
 
 function calcTotal(products: Product): number {
   return products.price * products.count;
 }
+const apple = {
+  name: "苹果",
+  price: 5.5,
+  count: 3,
 const apple = {
   name: "苹果",
   price: 5.5,
@@ -615,11 +622,9 @@ interface ElectricCar extends Vehicle {
 const myCar: ElectricCar = {
   brand: "比亚迪",
   year: 2025,
-  battery: 60,
-};
-console.log(
-  "我的车是${myCar.brand},${myCar.year}年款，电池${myCar.battery}kWh",
-);
+  battery: 60
+}
+console.log(`我的车是${myCar.brand},${myCar.year}年款，电池${myCar.battery}kWh`)
 /* ------------------------------ 题目分割线 -------------------------------- */
 
 // ---- 第3题：泛型函数（基础）----
@@ -639,7 +644,7 @@ function getFirst<T>(arr: T[]): T {
   return arr[0];
 }
 console.log(getFirst<number>([10, 20, 30]));
-console.log(getFirst<string>(["a", "b", "c"]));
+console.log(getFirst<number>(["a", "b", "c"]));
 /* ------------------------------ 题目分割线 -------------------------------- */
 
 // ---- 第4题：enum 枚举 + 函数 ----
@@ -778,8 +783,11 @@ function findScore(scores: ScoreRecord[], name: string): string {
     if (scores[i][0] === name) {
       return `${name}的分数是${scores[i][1]}`;
     }
+    else {
+      return "未找到该学生";
+    }
   }
-  return "未找到该学生";
+  return "未找到该学生"
   // 这里为什么不能在循环里面写else？写了之后会说这个函数没有return
 }
 console.log(findScore(scores, "李四"));
@@ -843,30 +851,79 @@ console.log(findScore(scores, "赵六"));
 //    - 再次打印小明已借图书的数量（预期：0）
 
 // 在这里写你的代码：
+/**书本状态
+ * Available可以借
+ * Borrowed已借出
+ * Reserved已预约
+ */
 enum BookStatus {
   Available = "可借",
   Borrowed = "已借出",
   Reserved = "已预约",
 }
+/**书本内容
+ * id--书本编码
+ * title--书名
+ * author--作者
+ * status（BookStatus）：当前状态
+ */
 interface Book {
   id: number;
   title: string;
   author: string;
   status: BookStatus;
 }
+/**读者
+ * name--名字
+ * borrowBook--借书清单[ ]
+ */
 interface Reader {
   name: string;
   borrowedBook: Book[];
 }
+/**创建一个新读者
+ * 
+ * @param name 读者的名字
+ * @returns 一个新读者
+ */
 function createReader(name: string): Reader {
   let newReader: Reader = { name: name, borrowedBook: [] };
   return newReader;
 }
-function borrowbook(newReader: Reader, book: Book) {
-  if (book.status !== BookStatus.Borrowed) {
-    return "该书不可借";
-  } else {
-    book;
-    Reader.borrowBook;
+/**借书函数
+ * 
+ * @param reader 借书的人
+ * @param book 借的这本书
+ * @returns string
+ */
+function borrowbook(reader: Reader, book: Book):string {
+  if (book.status === BookStatus.Borrowed) {
+    return"该书不可借"
+  }
+  else if(book.status===BookStatus.Reserved) {
+    return"该书不可借"
+  }
+  else{
+    book.status=BookStatus.Borrowed
+    reader.borrowedBook.push(book)
+    return"借阅成功"
+  }
+}
+/**还书函数
+ * 
+ * @param reader 还书的人
+ * @param bookId 还的这本书的id
+ * @returns string
+ */
+function returnBook(reader:Reader,bookId:number):string{
+  const bookindex=reader.borrowedBook.findIndex(book=>book.id===bookId)
+  // 这一段不是很懂为什么这个book，book.id可以自己知道是Book数组里面的，是因为borrowedBook的类型是Book[]吗
+  if(bookindex<0){
+    return"该读者未借此书"
+  }
+  else{
+    reader.borrowedBook[bookindex].status=BookStatus.Available
+    reader.borrowedBook.splice(bookindex,1)
+    return"归还成功"
   }
 }
